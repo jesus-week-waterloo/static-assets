@@ -13,7 +13,7 @@ jobs:
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
-      
+
     environment:
       DEPLOY_BRANCH: gh-pages
       USER_EMAIL: tyxchen@outlook.com
@@ -23,6 +23,10 @@ jobs:
     working_directory: ~/repo
 
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "6b:41:fa:7b:af:e6:f8:74:0a:01:65:dd:67:54:22:a3"
+
       - checkout
 
       # Download and cache dependencies
@@ -69,7 +73,7 @@ jobs:
                 ! -name '.git' ! -name '.gitignore' ! -name 'build' \
                 ! -name '.circleci' ! -name '.' \
                 -exec rm -rf {} \;
-    
+
       - run:
           name: Tell GitHub Pages to not process with Jekyll
           command: |
