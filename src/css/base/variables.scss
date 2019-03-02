@@ -1,0 +1,20 @@
+$font-baseline-12: "9.6px/12px";
+$font-baseline-16: "12.8px/16px";
+$font-baseline-20: "16px/20px";
+$font-baseline-24: "19.2px/24px";
+$font-baseline-28: "22.4px/28px";
+$font-baseline-36: "28.8px/36px";
+$font-baseline-48: "40px/48px";
+$font-baseline-64: "55.7px/64px";
+$font-baseline-80: "72px/80px";
+
+$body-font-family: 'IBM Plex Sans', -apple-system, 'Helvetica Neue', HelveticaNeue, 'Segoe UI', SegoeUI, sans-serif;
+$display-font-family: 'IBM Plex Mono', Monaco, Consolas, 'Ubuntu Mono', monospace;
+$body-font: $font-baseline-20 $body-font-family;
+
+$phone-max-br: 640px;
+$tablet-min-br: 641px;
+$tablet-max-br: 1024px;
+$desktop-min-br: 1025px;
+$desktop-max-br: 1600px;
+$desktop-lg-min-br: 1601px;
