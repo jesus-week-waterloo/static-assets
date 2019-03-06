@@ -1,0 +1,52 @@
+#main-footer {
+  background-color: $coal;
+  color: $white;
+  padding: 1em 0;
+
+  > div > div {
+    flex: 1;
+  }
+
+  a {
+    color: $white;
+    background: none;
+    border-bottom-color: $t;
+
+    &:hover {
+      color: $red;
+    }
+  }
+
+  p a {
+    color: $white;
+    border-bottom-color: transparentize($red, 0.3);
+    font-size: font-size($font-baseline-24);
+    line-height: line-height($font-baseline-24);
+
+    &:hover {
+      color: $white;
+      border-bottom-color: $red;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    line-height: line-height($font-baseline-24);
+  }
+
+  .postscript {
+    font-size: font-size($font-baseline-16);
+    opacity: 0.8;
+
+    > p {
+      flex: 1;
+    }
+  }
+}
+
+@media (min-width: $tablet-min-bp) {
+  .mainscript {
+    flex-direction: row;
+  }
+}

@@ -1,7 +1,52 @@
-@import "./base/variables.scss";
-@import "./base/colors.scss";
-@import "./base/utils.scss";
+@import "Css/base/variables.scss";
+@import "Css/base/functions.scss";
+@import "Css/base/colors.scss";
+@import "Css/base/utils.scss";
 
-main {
-    max-width: 800px;
+@import "Css/base/general.scss";
+
+@import "Css/components/top-bar.scss";
+@import "Css/components/footer.scss";
+
+body {
+  height: 100%;
 }
+
+#access,
+#main-header,
+#main-footer {
+  flex: none;
+}
+
+#content {
+  flex: 1 0 auto;
+}
+
+#access {
+  position: absolute;
+  top: -20em;
+  width: 100%;
+  z-index: $z4 + 1;
+}
+
+#access a,
+#access a:hover {
+  line-height: 3;
+  background-color: $aqua-40;
+  border-bottom-color: $aqua-70;
+}
+
+#access-skip {
+  position: absolute;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+#access-skip:focus {
+  top: 20em;
+}
+
+// page specific styles
+
+@import "Css/home.scss";
