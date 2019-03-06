@@ -1,0 +1,7 @@
+@function font-size($font) {
+	@return nth($font, 1);
+}
+
+@function line-height($font) {
+	@return nth($font, 2);
+}

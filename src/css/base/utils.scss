@@ -1,0 +1,73 @@
+.container {
+  width: 90%;
+  max-width: 800px;
+}
+
+.center {
+	margin-left: auto;
+  margin-right: auto;
+}
+
+.flex-row {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none;
+}
+
+.aria-hidden {
+  text-indent: -9999px;
+}
+
+@media (min-width: #{$mobile-max-bp + 1px}) {
+  .show-mobile-below {
+    display: none;
+  }
+}
+
+@each $sel, $bp in (tablet: ($tablet-max-bp, $tablet-min-bp), desktop: ($desktop-max-bp, $desktop-min-bp)) {
+  @media (min-width: #{nth($bp, 1) + 1px}) {
+    .show-#{$sel}-below {
+      display: none;
+    }
+  }
+  @media (max-width: #{nth($bp, 2) - 1px}) {
+    .show-#{$sel}-above {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: #{$desktop-lg-min-bp - 1px}) {
+  .show-desktop-lg-above {
+    display: none;
+  }
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.brand-highlight {
+  background-image: linear-gradient(to bottom, transparentize($red, .9), transparentize($red, .9));
+  background-size: 1em .6em;
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
