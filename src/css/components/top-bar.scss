@@ -15,6 +15,22 @@
 
 #main-nav {
   display: none;
+
+  a {
+    background: none;
+    border-color: $white;
+
+    &:hover {
+      color: $red;
+    }
+
+    &.current-page {
+      background-image: linear-gradient(to bottom, transparentize($red, 0.8), transparentize($red, 0.8));
+      background-size: 1em .5em;
+      background-repeat: repeat-x;
+      background-position: 0 100%;
+    }
+  }
 }
 
 @media (min-width: $desktop-min-bp) {

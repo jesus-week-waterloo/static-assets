@@ -1,1 +1,3 @@
-import '../css/index.scss';
+import { $, $$ } from "@js/modules/utils.js";
+
+import '@css/index.scss';

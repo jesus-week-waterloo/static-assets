@@ -1,6 +1,6 @@
 .container {
   width: 90%;
-  max-width: 800px;
+  max-width: 1024px;
 }
 
 .center {
@@ -63,11 +63,15 @@
 }
 
 .brand-highlight {
-  background-image: linear-gradient(to bottom, transparentize($red, .9), transparentize($red, .9));
+  background-image: linear-gradient(to bottom, transparentize($red, 0.9), transparentize($red, 0.9));
   background-size: 1em .6em;
   background-repeat: repeat-x;
   background-position: 0 100%;
 
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
+}
+
+.responsive-iframe {
+  max-width: 100%;
 }

@@ -1,12 +1,12 @@
-@import "Css/base/variables.scss";
-@import "Css/base/functions.scss";
-@import "Css/base/colors.scss";
-@import "Css/base/utils.scss";
+@import "@css/base/variables.scss";
+@import "@css/base/functions.scss";
+@import "@css/base/colors.scss";
+@import "@css/base/utils.scss";
 
-@import "Css/base/general.scss";
+@import "@css/base/general.scss";
 
-@import "Css/components/top-bar.scss";
-@import "Css/components/footer.scss";
+@import "@css/components/top-bar.scss";
+@import "@css/components/footer.scss";
 
 body {
   height: 100%;
@@ -49,4 +49,4 @@ body {
 
 // page specific styles
 
-@import "Css/home.scss";
+@import "@css/home.scss";
