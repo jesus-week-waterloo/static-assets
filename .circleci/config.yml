@@ -22,6 +22,10 @@ jobs:
 
     working_directory: ~/repo
 
+    branches:
+      only:
+        - master
+
     steps:
       - add_ssh_keys:
           fingerprints:
