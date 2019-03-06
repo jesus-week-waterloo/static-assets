@@ -1,5 +1,7 @@
 const path = require('path'),
-    MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+    MiniCSSExtractPlugin = require('mini-css-extract-plugin'),
+    OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
+    UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     entry: path.resolve(__dirname, 'src', 'js', 'index.js'),
@@ -26,6 +28,16 @@ module.exports = {
             }]
         }]
     },
+    optimization: {
+        minimizer: [
+            new UglifyJSPlugin({
+                cache: false,
+                parallel: true,
+                sourceMap: false
+            }),
+            new OptimizeCSSAssetsPlugin({})
+        ]
+    },
     plugins: [
         new MiniCSSExtractPlugin({
             filename: "[name].css",
@@ -33,8 +45,8 @@ module.exports = {
         })
     ],
     resolve: {
-      alias: {
-        Css: path.resolve(__dirname, 'src', 'css')
-      }
+        alias: {
+            Css: path.resolve(__dirname, 'src', 'css')
+        }
     }
-}
+};
