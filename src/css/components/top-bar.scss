@@ -1,34 +1,114 @@
 #main-header {
-  padding: 1em 0;
+  position: relative;
   font-size: font-size($font-baseline-24);
   line-height: line-height($font-baseline-24);
+  z-index: $z1;
+  padding: 1em 0;
 }
 
 #main-header .logo {
   flex: 1;
 
   a {
+    display: inline-block;
     background: none;
     border: none;
+  }
+
+  .brand-highlight {
+    font-size: font-size($font-baseline-28);
+    line-height: line-height($font-baseline-24);
+    margin-left: -0.2em;
+  }
+
+  .byline {
+    font-size: font-size($font-baseline-20);
+    line-height: line-height($font-baseline-20);
+  }
+
+  a:hover .byline {
+    color: $red-60;
+  }
+}
+
+#toggle-main-nav {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: line-height($font-baseline-24) + line-height($font-baseline-20);
+  background: none;
+  border: none;
+
+  .icon {
+    height: 1em;
+  }
+
+  &:hover .icon {
+    fill: $red-60;
+  }
+
+  .menu-close-icon {
+    display: none;
+  }
+
+  &.menu-open .menu-close-icon {
+    display: inline;
+  }
+
+  &.menu-open .menu-open-icon {
+    display: none;
   }
 }
 
 #main-nav {
-  display: none;
+  line-height: line-height($font-baseline-24) + line-height($font-baseline-20);
 
   a {
     background: none;
     border-color: $white;
 
     &:hover {
-      color: $red;
+      color: $red-60;
     }
 
     &.current-page {
-      background-image: linear-gradient(to bottom, transparentize($red, 0.8), transparentize($red, 0.8));
-      background-size: 1em .5em;
+      background-image: linear-gradient(to bottom, transparentize($red, 0.9), transparentize($red, 0.9));
+      background-size: 1em 0.85em;
       background-repeat: repeat-x;
       background-position: 0 100%;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+}
+
+@media (max-width: $tablet-max-bp) {
+  #main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: $z-1;
+    background-color: transparentize($coal, 0.3);
+    transform: translateY(-100vh);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.2s ease;
+
+    ul {
+      background-color: $white;
+      text-align: center;
+      padding-top: 4em;
+      padding-bottom: 1em;
+    }
+
+    &.menu-open {
+      transform: translateY(0);
+      opacity: 1;
     }
   }
 }
@@ -43,18 +123,14 @@
   }
 
   #main-nav {
-    display: block;
     margin-left: auto;
-  }
+  
+    ul {
+      display: flex;
+    }
 
-  #main-nav ul {
-    display: flex;
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
-  }
-
-  #main-nav li {
-    margin-left: 1em;
+    li {
+      margin-left: 1em;
+    }
   }
 }

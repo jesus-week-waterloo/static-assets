@@ -64,9 +64,10 @@
 
 .brand-highlight {
   background-image: linear-gradient(to bottom, transparentize($red, 0.9), transparentize($red, 0.9));
-  background-size: 1em .6em;
+  background-size: 1em 0.9em;
   background-repeat: repeat-x;
   background-position: 0 100%;
+  padding: 0 0.15em;
 
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
@@ -74,4 +75,18 @@
 
 .responsive-iframe {
   max-width: 100%;
+}
+
+.slash-sep {
+  font-weight: 400;
+  letter-spacing: -0.1em;
+  padding-right: 0.1em;
+  opacity: 0.7;
+}
+
+.vert-sep {
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  padding-right: 0.05em;
+  opacity: 0.7;
 }

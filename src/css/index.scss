@@ -8,8 +8,20 @@
 @import "@css/components/top-bar.scss";
 @import "@css/components/footer.scss";
 
+html {
+  background-color: $white;
+  color: $coal;
+  font-family: $font-family;
+  font-size: font-size($font-baseline-20);
+  line-height: line-height($font-baseline-20);
+}
+
 body {
   height: 100%;
+
+  &.overflow-disabled {
+    overflow: hidden;
+  }
 }
 
 #access,
