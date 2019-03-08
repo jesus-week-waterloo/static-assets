@@ -62,8 +62,64 @@
   text-align: right;
 }
 
+.font-12 {
+  font-size: font-size($font-baseline-12);
+  line-height: line-height($font-baseline-12);
+}
+
+.font-16 {
+  font-size: font-size($font-baseline-16);
+  line-height: line-height($font-baseline-16);
+}
+
+.font-20 {
+  font-size: font-size($font-baseline-20);
+  line-height: line-height($font-baseline-20);
+}
+
+.font-24 {
+  font-size: font-size($font-baseline-24);
+  line-height: line-height($font-baseline-24);
+}
+
+.font-28 {
+  font-size: font-size($font-baseline-28);
+  line-height: line-height($font-baseline-28);
+}
+
+.font-36 {
+  font-size: font-size($font-baseline-36);
+  line-height: line-height($font-baseline-36);
+}
+
+.font-48 {
+  font-size: font-size($font-baseline-48);
+  line-height: line-height($font-baseline-48);
+}
+
+.font-64 {
+  font-size: font-size($font-baseline-64);
+  line-height: line-height($font-baseline-64);
+}
+
+.font-80 {
+  font-size: font-size($font-baseline-80);
+  line-height: line-height($font-baseline-80);
+}
+
 .brand-highlight {
   background-image: linear-gradient(to bottom, transparentize($red, 0.9), transparentize($red, 0.9));
+  background-size: 1em 0.9em;
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+  padding: 0 0.15em;
+
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.blue-highlight {
+  background-image: linear-gradient(to bottom, transparentize($aqua, 0.6), transparentize($aqua, 0.6));
   background-size: 1em 0.9em;
   background-repeat: repeat-x;
   background-position: 0 100%;

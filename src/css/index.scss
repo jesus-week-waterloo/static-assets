@@ -1,5 +1,6 @@
 @import "@css/base/variables.scss";
 @import "@css/base/functions.scss";
+@import "@css/base/mixins.scss";
 @import "@css/base/colors.scss";
 @import "@css/base/utils.scss";
 
@@ -59,6 +60,7 @@ body {
   top: 20em;
 }
 
-// page specific styles
+// layout specific styles
 
 @import "@css/home.scss";
+@import "@css/landing.scss";
