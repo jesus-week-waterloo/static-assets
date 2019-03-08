@@ -95,8 +95,8 @@
     bottom: 0;
     z-index: $z-1;
     background-color: transparentize($coal, 0.3);
-    transform: translateY(-100vh);
     opacity: 0;
+    @include transform(translateY(-100vh));
     transition: transform 0.3s ease, opacity 0.2s ease;
 
     ul {
@@ -107,8 +107,8 @@
     }
 
     &.menu-open {
-      transform: translateY(0);
       opacity: 1;
+      @include transform(translateY(0));
     }
   }
 }
