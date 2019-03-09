@@ -1,0 +1,34 @@
+#events-listing {
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @media (min-width: $tablet-min-bp) { 
+    &:hover .event-link {
+      opacity: 0.5;
+    }
+  }
+}
+
+.event-listing {
+  flex: 1 0 300px;
+
+  h2 {
+    margin-top: 0;
+  }
+}
+
+
+.event-link {
+  display: block;
+  background: none;
+  padding: 1em;
+  padding-left: 0;
+  border: none;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    background: none;
+    opacity: 1 !important;
+  }
+}

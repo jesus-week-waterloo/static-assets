@@ -36,7 +36,7 @@ a {
   border-bottom: 1px solid transparentize($aqua-80, 0.3);
 
   &:hover {
-    background-color: transparentize($aqua, 0.5);
+    background-color: transparentize($aqua, 0.4);
     border-bottom-color: $aqua-80;
   }
 }
