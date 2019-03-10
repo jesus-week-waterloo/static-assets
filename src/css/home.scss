@@ -1,11 +1,109 @@
-#main-title h1 {
-  text-align: center;
-  font-size: font-size($font-baseline-80);
-  line-height: line-height($font-baseline-80);
-  font-weight: 700;
+#main-title {
+  height: calc(#{100vh} - #{(2.05*line-height($font-baseline-24) + 2*font-size($font-baseline-24))} - #{line-height($font-baseline-24) + 2*font-size($font-baseline-24)});
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-size: font-size($font-baseline-80);
+    line-height: line-height($font-baseline-80);
+    margin-top: -1em;
+  }
+
+  h2 {
+    margin-top: -1em;
+    margin-bottom: 0;
+  }
 }
 
-#main-title h2 {
-  text-align: center;
-  margin-top: -1em;
+#home-events-toast {
+  color: $white;
+  background-color: $red-70;
+  font-size: font-size($font-baseline-24);
+  line-height: line-height($font-baseline-24);
+  padding: 1em 0;
+  overflow: hidden;
+
+  &-marquee {
+    position: relative;
+    flex-grow: 1;
+    margin: 0;
+    margin-left: 0.3em;
+
+    li {
+      position: absolute;
+      top: 0;
+      left: 0;
+      list-style: none;
+      white-space: nowrap;
+    }
+
+    a, a:hover {
+      color: $white;
+      background: none;
+      border-bottom-color: $red-40;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: -5vw;
+      top: -1em;
+      bottom: -1em;
+      width: 10vw;
+      background-image: linear-gradient(to right, $t, $red-70 50%);
+      z-index: 1;
+    }
+  }
+
+  .animated &-marquee li {
+    opacity: 0;
+    @include transform(translateY(100%));
+    animation-name: home-events-marquee;
+    animation-iteration-count: infinite;
+  }
+
+  @media (min-width: $tablet-min-bp) {
+    .live {
+      position: relative;
+      display: inline-block;
+      width: 0.6em;
+      height: 0.6em;
+      margin-right: 0.6em;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        border: 0.3em solid $white;
+        border-radius: 0.3em;
+      }
+
+      &::after {
+        animation: live 3s ease infinite;
+      }
+    }
+  }
+}
+
+#main-content h2 {
+  font-size: font-size($font-baseline-48);
+  line-height: line-height($font-baseline-48);
+}
+
+#main-content p {
+  font-size: font-size($font-baseline-28);
+  line-height: line-height($font-baseline-28);
+}
+
+// duration: 6s
+@include keyframes(live) {
+  from {
+    opacity: 1;
+    @include transform(scale(0));
+  }
+
+  to {
+    opacity: 0;
+    @include transform(scale(3));
+  }
 }
