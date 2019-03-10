@@ -17,7 +17,7 @@ export class EventViewer {
 }
 
 export class RecentEventViewer extends EventViewer {
-  constructor(json, today = new Date('March 10 2019 19:00')) {
+  constructor(json, today = new Date()) {
     super(json);
 
     this.event = null;
@@ -41,12 +41,12 @@ export class RecentEventViewer extends EventViewer {
                 endTime = new Date(d + ' ' + times[1]);
 
           if (startTime <= today && today <= endTime) {
-            this.recentEvents.ongoing.push(Object.assign({}, event, {
+            this.recentEvents.ongoing.push(Object.assign({ id }, event, {
               formattedDate: this.format(startTime),
               formattedShortDate: this.formatShort(startTime),
             }));
           } else if (startTime > today && startTime - today < 86400000) {
-            this.recentEvents.upcoming.push(Object.assign({}, event, {
+            this.recentEvents.upcoming.push(Object.assign({ id }, event, {
               formattedDate: this.format(startTime),
               formattedShortDate: this.formatShort(startTime),
             }));
@@ -58,12 +58,12 @@ export class RecentEventViewer extends EventViewer {
               endTime = new Date(event.Date + ' ' + times[1]);
 
         if (startTime <= today && today <= endTime) {
-          this.recentEvents.ongoing.push(Object.assign({}, event, {
+          this.recentEvents.ongoing.push(Object.assign({ id }, event, {
             formattedDate: this.format(startTime),
             formattedShortDate: this.formatShort(startTime),
           }));
         } else if (startTime > today && startTime - today < 86400000) {
-          this.recentEvents.upcoming.push(Object.assign({}, event, {
+          this.recentEvents.upcoming.push(Object.assign({ id }, event, {
             formattedDate: this.format(startTime),
             formattedShortDate: this.formatShort(startTime),
           }));
