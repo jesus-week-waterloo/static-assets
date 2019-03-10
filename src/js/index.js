@@ -55,7 +55,7 @@ if (window.events && window.eventsURLs) {
         `<strong><span class="live"></span> Ongoing:</strong>
 <ul id="home-events-toast-marquee">
   ${events.ongoing.map((e, i) => `<li style="animation-duration:${6*events.ongoing.length}s;animation-delay:${6*i}s;">
-    <a href="${window.eventsURLs[e.id]}"><em>${e.Title}</em> <span class="slash-sep">//</span> ${e.Location || e.Locations.join(', ')}</a>
+    <a href="${window.eventsURLs[e.id]}"><em>${e.Title}</em> <span class="slash-sep">//</span> ${e.Time} <span class="slash-sep">//</span> ${e.Location || e.Locations.join(', ')}</a>
   </li>`).join('')}
 </ul>`);
     } else if (events.upcoming.length) {
@@ -125,7 +125,7 @@ if (window.events && window.eventsURLs) {
     if (events.upcoming.length) {
       $(container, '.upcoming-events').insertAdjacentHTML('beforeend', `${events.upcoming.map((e, i) => `<div>
   <p><strong><a href="${window.eventsURLs[e.id]}">${e.Title}</a></strong></p>
-  <p class="font-24">${e.Time} <span class="slash-sep">//</span> ${e.Location || e.Locations.join(', ')}</p>
+  <p class="font-24">${e.formattedShortDate} ${e.Time} <span class="slash-sep">//</span> ${e.Location || e.Locations.join(', ')}</p>
 </div>`).join('')}`)
     } else {
       $(container, '.upcoming-events').insertAdjacentHTML('beforeend', '<em>No upcoming events.</em>');
