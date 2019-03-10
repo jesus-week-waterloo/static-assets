@@ -15,16 +15,39 @@
 .gospel-container {
   flex-wrap: wrap;
   margin: 0 -1em;
+  margin-bottom: 2em;
 }
 
 .gospel-tract {
   flex: 1 0 270px;
   font-size: font-size($font-baseline-28);
   line-height: line-height($font-baseline-28);
-  margin: 0 1em;
+  margin: 0.5em 1em;
 
   h2 {
     margin-left: -0.15em;
+  }
+
+  &-content {
+    position: relative;
+  }
+
+  &-summary {
+    background-color: $white;
+    margin: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &-verse {
+    display: none;
+  }
+
+  &.revealed &-summary {
+    display: none;
+  }
+
+  &.revealed &-verse {
+    display: block;
   }
 
   @media (min-width: $tablet-min-bp) {
