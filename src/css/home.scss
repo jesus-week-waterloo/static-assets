@@ -51,6 +51,10 @@
       border-bottom-color: $red-40;
     }
 
+    a:hover {
+      border-bottom-color: $white;
+    }
+
     &::after {
       content: "";
       position: absolute;
@@ -186,6 +190,10 @@
     background-image: linear-gradient(to bottom, $aqua, $aqua);
   }
 
+  li {
+    margin-bottom: 0.5em;
+  }
+
   .link-more {
     background-color: $aqua;
     border-bottom-color: transparentize($aqua-90, 0.3);
@@ -219,12 +227,12 @@
     a {
       // color: transparentize($white, 0.1);
       background: none;
-      border-bottom-color: transparentize($red-90, 0.5);
+      border-bottom-color: transparentize($red-90, 0.4);
     }
 
     a:hover {
       background: none;
-      border-bottom-color: transparentize($red-90, 0.2);
+      border-bottom-color: $red-90;
     }
   }
 
@@ -237,11 +245,11 @@
   .link-more {
     // color: transparentize($white, 0.1);
     background-color: transparentize($red-70, 0.8);
-    border-bottom-color: transparentize($red-90, 0.5);
+    border-bottom-color: transparentize($red-90, 0.4);
 
     &:hover {
       background-color: transparentize($red-70, 0.8);
-      border-bottom-color: transparentize($red-90, 0.2);
+      border-bottom-color: $red-90;
     }
   }
 }
