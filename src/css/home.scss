@@ -1,17 +1,25 @@
-#main-title {
+#home-title {
   height: calc(#{100vh} - #{(2.05*line-height($font-baseline-24) + 2*font-size($font-baseline-24))} - #{line-height($font-baseline-24) + 2*font-size($font-baseline-24)});
   justify-content: center;
-  align-items: center;
 
   h1 {
     font-size: font-size($font-baseline-80);
     line-height: line-height($font-baseline-80);
     margin-top: -1em;
+    margin-left: -0.15em;
   }
 
   h2 {
     margin-top: -1em;
     margin-bottom: 0;
+  }
+
+  @media (min-width: $tablet-min-bp) {
+    align-items: center;
+
+    h1 {
+      margin-left: 0;
+    }
   }
 }
 
@@ -57,6 +65,7 @@
 
   .animated &-marquee li {
     opacity: 0;
+    pointer-events: none;
     @include transform(translateY(100%));
     animation-name: home-events-marquee;
     animation-iteration-count: infinite;
@@ -85,14 +94,60 @@
   }
 }
 
-#main-content h2 {
-  font-size: font-size($font-baseline-48);
-  line-height: line-height($font-baseline-48);
-}
-
-#main-content p {
+#home-content {
   font-size: font-size($font-baseline-28);
   line-height: line-height($font-baseline-28);
+
+  .container {
+    padding: 2em 0;
+  }
+
+  h2 {
+    font-size: font-size($font-baseline-48);
+    line-height: line-height($font-baseline-48);
+    margin-top: 0;
+    margin-left: -0.15em;
+
+    a, a:hover {
+      background-color: $t;
+      background-size: calc(100% - 1em) 0.9em;
+      background-repeat: no-repeat;
+      border: none;
+      transition: background-size 0.3s ease;
+    }
+
+    a:hover {
+      background-size: 100% 0.9em;
+    }
+
+    .icon {
+      margin-left: 0.15em;
+    }
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  .link-more {
+    font-size: font-size($font-baseline-24);
+    padding: 0 0.15em;
+  }
+}
+
+.icon-link {
+  .icon {
+    height: 0.5em;
+    vertical-align: middle;
+    fill: currentColor;
+    padding-right: 0.2em;
+    @include transform(translateX(0));
+    transition: 0.3s ease;
+  }
+
+  &:hover .icon {
+    @include transform(translateX(0.2em));
+  }
 }
 
 // duration: 6s
@@ -105,5 +160,108 @@
   to {
     opacity: 0;
     @include transform(scale(3));
+  }
+}
+
+#vision {
+  .highlight {
+    background-image: linear-gradient(to bottom, transparentize($red, 0.9), transparentize($red, 0.9));
+  }
+
+  .link-more {
+    background-color: transparentize($red, 0.9);
+    border-bottom-color: transparentize($red-80, 0.3);
+
+    &:hover {
+      background-color: transparentize($red, 0.9);
+      border-bottom-color: $red-80;
+    }
+  }
+}
+
+#gospel {
+  background-color: $aqua-40;
+
+  .highlight {
+    background-image: linear-gradient(to bottom, $aqua, $aqua);
+  }
+
+  .link-more {
+    background-color: $aqua;
+    border-bottom-color: transparentize($aqua-90, 0.3);
+
+    &:hover {
+      background-color: $aqua;
+      border-bottom-color: $aqua-90;
+    }
+  }
+}
+
+#events {
+  background-color: transparentize($red-90, 0.9);
+  // color: transparentize($white, 0.1);
+
+  .highlight {
+    background-image: linear-gradient(to bottom, transparentize($red-70, 0.8), transparentize($red-70, 0.8));
+    // color: transparentize($white, 0.1);
+  }
+
+  .events-container {
+    flex-wrap: wrap;
+    margin-top: -1.5em;
+
+    h3 {
+      font-size: font-size($font-baseline-20);
+      text-transform: uppercase;
+      margin-top: 0;
+    }
+
+    a {
+      // color: transparentize($white, 0.1);
+      background: none;
+      border-bottom-color: transparentize($red-90, 0.5);
+    }
+
+    a:hover {
+      background: none;
+      border-bottom-color: transparentize($red-90, 0.2);
+    }
+  }
+
+  .ongoing-events,
+  .upcoming-events {
+    flex: 1 0 320px;
+    margin-top: 1.5em;
+  }
+
+  .link-more {
+    // color: transparentize($white, 0.1);
+    background-color: transparentize($red-70, 0.8);
+    border-bottom-color: transparentize($red-90, 0.5);
+
+    &:hover {
+      background-color: transparentize($red-70, 0.8);
+      border-bottom-color: transparentize($red-90, 0.2);
+    }
+  }
+}
+
+#connect {
+  background-color: transparentize($aqua-90, 0.85);
+
+  .highlight {
+    background-image: linear-gradient(to bottom, transparentize($aqua-70, 0.8), transparentize($aqua-70, 0.8));
+  }
+
+  @media (min-width: $tablet-min-bp) {
+    .connect-container {
+      text-align: center;
+    }
+  }
+}
+
+#contact {
+  .highlight {
+    background-image: linear-gradient(to bottom, transparentize($quartz-10, 0.5), transparentize($quartz-10, 0.5));
   }
 }

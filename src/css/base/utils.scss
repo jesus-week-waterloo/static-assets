@@ -107,6 +107,17 @@
   line-height: line-height($font-baseline-80);
 }
 
+.highlight {
+  background-image: linear-gradient(to bottom, transparentize($white, 0.9), transparentize($white, 0.9));
+  background-size: 1em 0.9em;
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+  padding: 0 0.15em;
+
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
 .brand-highlight {
   background-image: linear-gradient(to bottom, transparentize($red, 0.9), transparentize($red, 0.9));
   background-size: 1em 0.9em;

@@ -32,26 +32,13 @@
   }
 }
 
-.layout-gospel .connect-btn {
+.layout-gospel .blue-btn {
   color: $aqua-40;
-  background-color: $t;
   background-image: linear-gradient(to bottom, $aqua-40, $aqua-40);
-  background-size: 100% 0;
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  font-size: font-size($font-baseline-24);
-  padding: 0.5em 0.8em;
-  border: 0.1em solid $aqua-40;
-  margin-right: 1em;
-  margin-bottom: 0.5em;
-  transition: 0.3s ease;
-
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
+  border-color: $aqua-40;
 
   &:hover {
     color: $aqua-90;
-    background-size: 100% 100%;
     border-bottom-color: $aqua-40;
   }
 }

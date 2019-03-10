@@ -42,16 +42,16 @@ for (const tabber of $$('.tabber')) {
 
 if (window.events && window.eventsURLs) {
   const viewer = new RecentEventViewer(window.events);
+  const events = viewer.getRecentEvents();
 
   if ($('#home-events-toast')) {
-    const events = viewer.getRecentEvents();
-    console.dir(events);
-    
+    const toast = $('#home-events-toast');
+
     if (events.ongoing.length) {
       if (events.ongoing.length > 1) {
-        $('#home-events-toast .container').classList.add('animated');
+        $(toast, '.container').classList.add('animated');
       }
-      $('#home-events-toast .container').insertAdjacentHTML('beforeend',
+      $(toast, '.container').insertAdjacentHTML('beforeend',
         `<strong><span class="live"></span> Ongoing:</strong>
 <ul id="home-events-toast-marquee">
   ${events.ongoing.map((e, i) => `<li style="animation-duration:${6*events.ongoing.length}s;animation-delay:${6*i}s;">
@@ -60,9 +60,9 @@ if (window.events && window.eventsURLs) {
 </ul>`);
     } else if (events.upcoming.length) {
       if (events.upcoming.length > 1) {
-        $('#home-events-toast .container').classList.add('animated');
+        $(toast, '.container').classList.add('animated');
       }
-      $('#home-events-toast .container').insertAdjacentHTML('beforeend',
+      $(toast, '.container').insertAdjacentHTML('beforeend',
         `<strong>Next Event:</strong>
 <ul id="home-events-toast-marquee">
   ${events.upcoming.map((e, i) => `<li style="animation-duration:${6*events.upcoming.length}s;animation-delay:${6*i}s;">
@@ -70,43 +70,66 @@ if (window.events && window.eventsURLs) {
   </li>`).join('')}
 </ul>`)
     } else {
-      $('#home-events-toast .container').style.visibility = 'hidden';
+      toast.classList.add('text-center');
+      $(toast, '.container').innerHTML = '<em>Thanks for being a part of Jesus Week 2019!</em>';
     }
 
-    $('#home-events-toast').insertAdjacentHTML('beforeend', `<style>
-@-webkit-keyframes home-events-marquee {
+    toast.insertAdjacentHTML('beforeend', `<style>@-webkit-keyframes home-events-marquee {
   from {
     opacity: 0;
+    pointer-events: none;
     -webkit-transform: translateY(100%);
   }
-
   ${30/(6*(events.ongoing.length || events.upcoming.length || 1))}%, ${570/(6*(events.ongoing.length || events.upcoming.length || 1))}% {
     opacity: 1;
+    pointer-events: all;
     -webkit-transform: translateY(0);
   }
-
   ${600/(6*(events.ongoing.length || events.upcoming.length || 1))}% {
     opacity: 0;
+    pointer-events: none;
     -webkit-transform: translateY(-100%);
   }
 }
 @keyframes home-events-marquee {
   from {
     opacity: 0;
+    pointer-events: none;
     transform: translateY(100%);
   }
-
   ${30/(6*(events.ongoing.length || events.upcoming.length || 1))}%, ${570/(6*(events.ongoing.length || events.upcoming.length || 1))}% {
     opacity: 1;
+    pointer-events: all;
     transform: translateY(0);
   }
-
   ${600/(6*(events.ongoing.length || events.upcoming.length || 1))}% {
     opacity: 0;
+    pointer-events: none;
     transform: translateY(-100%);
   }
-}
-</style>`)
+}</style>`)
+  }
+
+  if ($('.layout-home #events')) {
+    const container = $('.layout-home #events .events-container');
+
+    if (events.ongoing.length) {
+      $(container, '.ongoing-events').insertAdjacentHTML('beforeend', `${events.ongoing.map((e, i) => `<div>
+  <p><strong><a href="${window.eventsURLs[e.id]}">${e.Title}</a></strong></p>
+  <p class="font-24">${e.Time} <span class="slash-sep">//</span> ${e.Location || e.Locations.join(', ')}</p>
+</div>`).join('')}`)
+    } else {
+      $(container, '.ongoing-events').insertAdjacentHTML('beforeend', '<em>No ongoing events.</em>');
+    }
+
+    if (events.upcoming.length) {
+      $(container, '.upcoming-events').insertAdjacentHTML('beforeend', `${events.upcoming.map((e, i) => `<div>
+  <p><strong><a href="${window.eventsURLs[e.id]}">${e.Title}</a></strong></p>
+  <p class="font-24">${e.Time} <span class="slash-sep">//</span> ${e.Location || e.Locations.join(', ')}</p>
+</div>`).join('')}`)
+    } else {
+      $(container, '.upcoming-events').insertAdjacentHTML('beforeend', '<em>No upcoming events.</em>');
+    }
   }
 }
 
