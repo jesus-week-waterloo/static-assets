@@ -17,12 +17,10 @@
   }
 }
 
-
 .event-link {
   display: block;
   background: none;
   padding: 1em;
-  padding-left: 0;
   border: none;
   opacity: 1;
   transition: opacity 0.3s ease;
@@ -30,5 +28,36 @@
   &:hover {
     background: none;
     opacity: 1 !important;
+
+    .event-go-icon-left,
+    .event-go-icon-right {
+      opacity: 1;
+      @include transform(translateX(0));
+    }
   }
+}
+
+.event-content {
+  display: inline-block;
+}
+
+.event-go-icon-left,
+.event-go-icon-right {
+  display: inline-block;
+  opacity: 0;
+  transition: 0.3s ease;
+
+  .icon {
+    fill: $red-60;
+  }
+}
+
+.event-go-icon-left {
+  margin-right: 0.1em;
+  @include transform(translateX(-0.3em));
+}
+
+.event-go-icon-right {
+  margin-left: 0.1em;
+  @include transform(translateX(0.3em));
 }

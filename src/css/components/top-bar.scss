@@ -18,7 +18,7 @@
   .brand-highlight {
     font-size: font-size($font-baseline-28);
     line-height: line-height($font-baseline-24);
-    margin-left: -0.2em;
+    margin-left: -0.15em;
   }
 
   .byline {
@@ -97,6 +97,7 @@
     background-color: transparentize($coal, 0.3);
     opacity: 0;
     @include transform(translateY(-100vh));
+    -webkit-transition: -webkit-transform 0.3s ease, opacity 0.2s ease;
     transition: transform 0.3s ease, opacity 0.2s ease;
 
     ul {

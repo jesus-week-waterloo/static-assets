@@ -86,3 +86,9 @@ mark {
   color: $red;
   font-weight: 700;
 }
+
+hr {
+  border: none;
+  border-bottom: 1px solid $quartz-50;
+  margin: 1em 0;
+}

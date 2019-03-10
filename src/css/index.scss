@@ -6,6 +6,7 @@
 
 @import "@css/base/general.scss";
 
+@import "@css/components/tabber.scss";
 @import "@css/components/top-bar.scss";
 @import "@css/components/footer.scss";
 
@@ -63,6 +64,6 @@ body {
 
 // layout specific styles
 
-@import "@css/events.scss";
 @import "@css/landing.scss";
+@import "@css/events.scss";
 @import "@css/home.scss";
