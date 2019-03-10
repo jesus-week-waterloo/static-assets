@@ -1,5 +1,6 @@
 .splash {
   padding: 2em;
+  margin: 1em 0;
 
   &-blue {
     background-color: $aqua-80;
@@ -13,14 +14,22 @@
 
 .gospel-container {
   flex-wrap: wrap;
+  margin: 0 -1em;
 }
 
 .gospel-tract {
-  flex: 1 0 400px;
+  flex: 1 0 270px;
   font-size: font-size($font-baseline-28);
   line-height: line-height($font-baseline-28);
-  padding: 1em;
-  padding-left: 0;
+  margin: 0 1em;
+
+  h2 {
+    margin-left: -0.15em;
+  }
+
+  @media (min-width: $tablet-min-bp) {
+    flex-basis: 320px;
+  }
 }
 
 .layout-gospel .connect-btn {
