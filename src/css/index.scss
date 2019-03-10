@@ -62,8 +62,29 @@ body {
   top: 20em;
 }
 
+.navigate-up {
+  display: inline-block;
+  background: none;
+  color: $quartz;
+  font-size: font-size($font-baseline-16);
+  border-bottom-color: $t;
+  margin-top: font-size($font-baseline-48)/2;
+
+  &:hover {
+    background: none;
+    border-bottom-color: $quartz;
+  }
+
+  + h1 {
+    margin-top: 0.3em;
+  }
+}
+
 // layout specific styles
 
 @import "@css/landing.scss";
+@import "@css/event.scss";
+
 @import "@css/events.scss";
+@import "@css/gospel.scss";
 @import "@css/home.scss";
