@@ -33,6 +33,7 @@ a {
   background-color: transparentize($aqua, 0.7);
   color: $coal;
   text-decoration: none;
+  word-break: break-all;
   border-bottom: 1px solid transparentize($aqua-80, 0.3);
 
   &:hover {
