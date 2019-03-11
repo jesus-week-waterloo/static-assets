@@ -39,16 +39,21 @@
 
     li {
       position: absolute;
-      top: 0;
+      top: -1em;
       left: 0;
+      right: 0;
+      bottom: -1em;
       list-style: none;
       white-space: nowrap;
+      overflow-x: auto;
+      padding-top: 1em;
     }
 
     a, a:hover {
       color: $white;
       background: none;
       border-bottom-color: $red-40;
+      margin-right: 5vw;
     }
 
     a:hover {
@@ -59,20 +64,37 @@
       content: "";
       position: absolute;
       right: -5vw;
-      top: -1em;
-      bottom: -1em;
+      top: -0.5em;
+      bottom: -0.5em;
       width: 10vw;
       background-image: linear-gradient(to right, $t, $red-70 50%);
       z-index: 1;
     }
   }
 
-  .animated &-marquee li {
+  &.animated {
+    background-image: linear-gradient(to bottom, $red-80, $red-80);
+    background-size: 0 0;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+
+    @include animation(countdown 6s linear infinite);
+  }
+
+  &.animated &-marquee li {
     opacity: 0;
     pointer-events: none;
     @include transform(translateY(100%));
+    -webkit-animation-name: home-events-marquee;
     animation-name: home-events-marquee;
+    -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
+  }
+
+  &:hover,
+  &:hover &-marquee li {
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
   }
 
   @media (min-width: $tablet-min-bp) {
@@ -154,7 +176,21 @@
   }
 }
 
-// duration: 6s
+@include keyframes(countdown) {
+  0% {
+    background-size: 0 0;
+  }
+  5% {
+    background-size: 0 0.3em;
+  }
+  95% {
+    background-size: 100% 0.3em;
+  }
+  to {
+    background-size: 100% 0;
+  }
+}
+
 @include keyframes(live) {
   from {
     opacity: 1;
@@ -207,11 +243,9 @@
 
 #events {
   background-color: transparentize($red-90, 0.9);
-  // color: transparentize($white, 0.1);
 
   .highlight {
     background-image: linear-gradient(to bottom, transparentize($red-70, 0.8), transparentize($red-70, 0.8));
-    // color: transparentize($white, 0.1);
   }
 
   .events-container {
@@ -219,13 +253,13 @@
     margin-top: -1.5em;
 
     h3 {
+      color: $quartz;
       font-size: font-size($font-baseline-20);
       text-transform: uppercase;
       margin-top: 0;
     }
 
     a {
-      // color: transparentize($white, 0.1);
       background: none;
       border-bottom-color: transparentize($red-90, 0.4);
     }
@@ -243,7 +277,6 @@
   }
 
   .link-more {
-    // color: transparentize($white, 0.1);
     background-color: transparentize($red-70, 0.8);
     border-bottom-color: transparentize($red-90, 0.4);
 
