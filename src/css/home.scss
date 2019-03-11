@@ -77,14 +77,12 @@
     background-size: 0 0;
     background-position: 0 100%;
     background-repeat: no-repeat;
-    pointer-events: none;
 
     @include animation(countdown 6s linear infinite);
   }
 
   &.animated &-marquee li {
     opacity: 0;
-    pointer-events: none;
     @include transform(translateY(20%));
     -webkit-animation-name: home-events-marquee;
     animation-name: home-events-marquee;
@@ -178,6 +176,7 @@
 @include keyframes(countdown) {
   0% {
     background-size: 0 0;
+    pointer-events: none;
   }
   5% {
     background-size: 0 0.3em;
@@ -192,6 +191,7 @@
   }
   to {
     background-size: 100% 0;
+    pointer-events: none;
   }
 }
 
