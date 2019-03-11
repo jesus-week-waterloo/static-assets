@@ -98,25 +98,23 @@
     animation-play-state: paused;
   }
 
-  @media (min-width: $tablet-min-bp) {
-    .live {
-      position: relative;
-      display: inline-block;
-      width: 0.6em;
-      height: 0.6em;
-      margin-right: 0.6em;
+  .live {
+    position: relative;
+    display: inline-block;
+    width: 0.6em;
+    height: 0.6em;
+    margin-right: 0.4em;
 
-      &::before,
-      &::after {
-        content: "";
-        position: absolute;
-        border: 0.3em solid $white;
-        border-radius: 0.3em;
-      }
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      border: 0.3em solid $white;
+      border-radius: 0.3em;
+    }
 
-      &::after {
-        animation: live 3s ease infinite;
-      }
+    &::after {
+      animation: live 3s ease infinite;
     }
   }
 }

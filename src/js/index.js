@@ -55,7 +55,7 @@ if (window.events && window.eventsURLs) {
         `<strong><span class="live"></span> Ongoing:</strong>
 <ul id="home-events-toast-marquee">
   ${events.ongoing.map((e, i) => `<li style="-webkit-animation-duration:${6*events.ongoing.length}s;animation-duration:${6*events.ongoing.length}s;-webkit-animation-delay:${6*i}s;animation-delay:${6*i}s;">
-    <a href="${window.eventsURLs[e.id]}"><em>${e.Title}</em> <span class="slash-sep">//</span> ${e.Time} <span class="slash-sep">//</span> ${e.Location || e.Locations.join(', ')}</a>
+    <a href="${window.eventsURLs[e.id]}"><em>${e.Title}</em> <span class="slash-sep">//</span> ${e.Location || e.Locations.join(', ')} <span class="slash-sep">//</span> ${e.Time}</a>
   </li>`).join('')}
 </ul>`);
     } else if (events.upcoming.length) {

@@ -44,11 +44,14 @@ export class RecentEventViewer extends EventViewer {
             this.recentEvents.ongoing.push(Object.assign({ id }, event, {
               formattedDate: this.format(startTime),
               formattedShortDate: this.formatShort(startTime),
+              startTime, endTime
             }));
-          } else if (startTime > today && startTime - today < 86400000) {
+          } else if (startTime > today && 
+              (startTime - today < 86400000 || (today.getHours() > 3 && startTime.getDate() - today.getDate() == 1))) {
             this.recentEvents.upcoming.push(Object.assign({ id }, event, {
               formattedDate: this.format(startTime),
               formattedShortDate: this.formatShort(startTime),
+              startTime, endTime
             }));
             break;
           }
@@ -61,15 +64,21 @@ export class RecentEventViewer extends EventViewer {
           this.recentEvents.ongoing.push(Object.assign({ id }, event, {
             formattedDate: this.format(startTime),
             formattedShortDate: this.formatShort(startTime),
+            startTime, endTime
           }));
-        } else if (startTime > today && startTime - today < 86400000) {
+        } else if (startTime > today && 
+            (startTime - today < 86400000 || (today.getHours() > 3 && startTime.getDate() - today.getDate() == 1))) {
           this.recentEvents.upcoming.push(Object.assign({ id }, event, {
             formattedDate: this.format(startTime),
             formattedShortDate: this.formatShort(startTime),
+            startTime, endTime
           }));
         }
       }
     }
+
+    this.recentEvents.ongoing.sort((el1, el2) => el1.startTime - el2.startTime);
+    this.recentEvents.upcoming.sort((el1, el2) => el1.startTime - el2.startTime);
   }
 
   getRecentEvents() {
