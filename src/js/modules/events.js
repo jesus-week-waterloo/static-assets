@@ -77,7 +77,7 @@ export class RecentEventViewer extends EventViewer {
       }
     }
 
-    this.recentEvents.ongoing.sort((el1, el2) => el1.startTime - el2.startTime);
+    this.recentEvents.ongoing.sort((el1, el2) => el1.endTime - el2.endTime);
     this.recentEvents.upcoming.sort((el1, el2) => el1.startTime - el2.startTime);
   }
 
