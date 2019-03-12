@@ -10,19 +10,42 @@
 }
 
 .event-listing {
+  position: relative;
+  background-size: cover;
+  background-position: center 0;
   flex: 1 0 300px;
 
   h2 {
-    margin-top: 0;
+    margin-top: 1rem;
+  }
+
+  &-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $white;
+    opacity: 1;
+    transition: 0.3s ease;
+  }
+
+  &:hover &-bg {
+    background-color: mix($quartz-10, $white);
+    opacity: 0.8;
   }
 }
 
 .event-link {
+  position: relative;
   display: block;
+  box-sizing: border-box;
+  height: 100%;
   background: none;
   padding: 1em;
   border: none;
   opacity: 1;
+  z-index: $z1;
   transition: opacity 0.3s ease;
 
   &:hover {
