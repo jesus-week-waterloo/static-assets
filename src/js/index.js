@@ -8,6 +8,7 @@ function closeMenu() {
   document.body.classList.remove('overflow-disabled');
   $('#main-nav').classList.remove('menu-open');
   $('#toggle-main-nav').classList.remove('menu-open');
+  $('#main-header .logo').classList.remove('menu-open');
   $('#toggle-main-nav').setAttribute('title', 'Open navigation');
   $('#toggle-main-nav').setAttribute('aria-label', 'Open navigation');
 }
@@ -16,6 +17,7 @@ function openMenu() {
   document.body.classList.add('overflow-disabled');
   $('#main-nav').classList.add('menu-open');
   $('#toggle-main-nav').classList.add('menu-open');
+  $('#main-header .logo').classList.add('menu-open');
   $('#toggle-main-nav').setAttribute('title', 'Close navigation');
   $('#toggle-main-nav').setAttribute('aria-label', 'Close navigation');
 }

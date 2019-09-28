@@ -4,21 +4,30 @@
   line-height: line-height($font-baseline-24);
   z-index: $z1;
   padding: 1em 0;
+
+  a {
+    background: none;
+    border-color: $grey-90;
+    color: $grey-10;
+
+    &:hover {
+      border-color: $grey-10;
+    }
+
+    &.current-page {
+      border-color: $grey-20;
+    }
+  }
 }
 
 #main-header .logo {
   flex: 1;
+  opacity: 1;
+  transition: opacity 0.2s ease;
 
   a {
     display: inline-block;
-    background: none;
     border: none;
-  }
-
-  .brand-highlight {
-    font-size: font-size($font-baseline-28);
-    line-height: line-height($font-baseline-24);
-    margin-left: -0.15em;
   }
 
   .byline {
@@ -27,7 +36,7 @@
   }
 
   a:hover .byline {
-    color: $red-60;
+    color: $purple-20;
   }
 }
 
@@ -41,6 +50,7 @@
 
   .icon {
     height: 1em;
+    fill: currentColor;
   }
 
   &:hover .icon {
@@ -61,28 +71,22 @@
 }
 
 #main-nav {
+  position: absolute;
   line-height: line-height($font-baseline-24) + line-height($font-baseline-20);
-
-  a {
-    background: none;
-    border-color: $white;
-
-    &:hover {
-      color: $red-60;
-    }
-
-    &.current-page {
-      background-image: linear-gradient(to bottom, transparentize($red, 0.9), transparentize($red, 0.9));
-      background-size: 1em 0.85em;
-      background-repeat: repeat-x;
-      background-position: 0 100%;
-    }
-  }
+  opacity: 0;
+  z-index: $z-1;
+  -webkit-transition: -webkit-transform 0.3s ease, opacity 0.2s ease;
+  transition: transform 0.3s ease, opacity 0.2s ease;
 
   ul {
     list-style: none;
     padding-left: 0;
     margin: 0;
+  }
+
+  &.menu-open {
+    opacity: 1;
+    z-index: $z0;
   }
 }
 
@@ -93,34 +97,25 @@
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: $z-1;
     background-color: transparentize($coal, 0.3);
-    opacity: 0;
     @include transform(translateY(-100vh));
-    -webkit-transition: -webkit-transform 0.3s ease, opacity 0.2s ease;
-    transition: transform 0.3s ease, opacity 0.2s ease;
 
     ul {
-      background-color: $white;
+      background: $grey-90;
       text-align: center;
       padding-top: 4em;
       padding-bottom: 1em;
     }
 
     &.menu-open {
-      opacity: 1;
       @include transform(translateY(0));
     }
   }
 }
 
 @media (min-width: $desktop-min-bp) {
-  #main-header .logo {
-    flex: none;
-  }
-
-  #toggle-main-nav {
-    display: none;
+  #main-header .logo.menu-open {
+    opacity: 0;
   }
 
   #main-nav {

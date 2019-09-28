@@ -11,8 +11,8 @@
 @import "@css/components/footer.scss";
 
 html {
-  background-color: $white;
-  color: $coal-80;
+  background-color: $grey-90;
+  color: $white;
   font-family: $font-family;
   font-size: font-size($font-baseline-20);
   line-height: line-height($font-baseline-20);
@@ -35,6 +35,8 @@ body {
 
 #content {
   flex: 1 0 auto;
+  background: $white;
+  color: $grey-90;
 }
 
 #access {

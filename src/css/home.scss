@@ -1,311 +1,375 @@
-#home-title {
-  height: calc(#{100vh} - #{(2.05*line-height($font-baseline-24) + 2*font-size($font-baseline-24))} - #{line-height($font-baseline-24) + 2*font-size($font-baseline-24)});
-  justify-content: center;
+.layout-home #content {
+  background: $grey-90;
+  color: $white;
+}
 
-  h1 {
-    font-size: font-size($font-baseline-80);
-    line-height: line-height($font-baseline-80);
+.layout-home .container {
+  max-width: 1440px;
+}
+
+.layout-home .sub-container {
+  max-width: 1024px;
+}
+
+.HomeTitle {
+  position: relative;
+  height: calc(#{100vh} - #{(2.05*line-height($font-baseline-24) + 2*font-size($font-baseline-24))});
+  justify-content: center;
+  background-color: $grey-90;
+  color: $white;
+
+  &_title {
+    font-size: font-size($font-baseline-64);
+    line-height: line-height($font-baseline-64);
+    font-weight: 600;
+    text-transform: uppercase;
     margin-top: -1em;
     margin-left: -0.15em;
+    z-index: $z2;
   }
 
-  h2 {
-    margin-top: -1em;
-    margin-bottom: 0;
+  &_textBackground {
+    background: $purple-10;
+    color: $purple-90;
+    padding: 0 4px;
+    margin: 0 -4px;
+
+    @media (min-width: $tablet-min-bp) {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  &_backgroundQuestions {
+    z-index: $z1;
+  }
+
+  &_racingStripe {
+    position: absolute;
+    top: -#{(2.05*line-height($font-baseline-24) + 2*font-size($font-baseline-24))};
+    bottom: 0;
+    left: calc(#{50%} + #{13px});
+    width: 139px;
+    background: $purple-10;
   }
 
   @media (min-width: $tablet-min-bp) {
     align-items: center;
 
-    h1 {
+    &_title {
       margin-left: 0;
     }
   }
 }
 
-#home-events-toast {
-  color: $white;
-  background-color: $red-70;
-  font-size: font-size($font-baseline-24);
-  line-height: line-height($font-baseline-24);
-  padding: 1em 0;
-  overflow: hidden;
+.HomeSection {
+  position: relative;
+  box-sizing: border-box;
 
-  &-marquee {
-    position: relative;
-    flex-grow: 1;
+  &_title {
+    position: absolute;
+    text-transform: uppercase;
     margin: 0;
-    margin-left: 0.3em;
-
-    li {
-      position: absolute;
-      top: -1em;
-      left: 0;
-      right: 0;
-      bottom: -1em;
-      list-style: none;
-      white-space: nowrap;
-      overflow-x: auto;
-      padding-top: 1em;
-    }
-
-    a, a:hover {
-      color: $white;
-      background: none;
-      border-bottom-color: $red-40;
-      margin-right: 5vw;
-    }
-
-    a:hover {
-      border-bottom-color: $white;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      right: -5vw;
-      top: -0.5em;
-      bottom: -0.5em;
-      width: 10vw;
-      background-image: linear-gradient(to right, $t, $red-70 50%);
-    }
   }
 
-  &.animated {
-    background-image: linear-gradient(to bottom, $red-80, $red-80);
-    background-size: 0 0;
-    background-position: 0 100%;
-    background-repeat: no-repeat;
-
-    @include animation(countdown 6s linear infinite);
-  }
-
-  &.animated &-marquee li {
-    opacity: 0;
-    @include transform(translateY(20%));
-    -webkit-animation-name: home-events-marquee;
-    animation-name: home-events-marquee;
-    -webkit-animation-iteration-count: infinite;
-    animation-iteration-count: infinite;
-  }
-
-  &:hover,
-  &:hover &-marquee li {
-    -webkit-animation-play-state: paused;
-    animation-play-state: paused;
-  }
-
-  .live {
-    position: relative;
+  &_link {
     display: inline-block;
-    width: 0.6em;
-    height: 0.6em;
-    margin-right: 0.4em;
+    font-size: font-size($font-baseline-20);
+    line-height: line-height($font-baseline-20);
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 0;
+    margin-top: 2em;
 
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      border: 0.3em solid $white;
-      border-radius: 0.3em;
+    .icon {
+      fill: currentColor;
+      vertical-align: -.1em;
+      transform: translateX(0);
+      transition: transform .3s;
     }
 
-    &::after {
-      animation: live 3s ease infinite;
+    &:hover .icon {
+      transform: translateX(.5em);
     }
+  }
+}
+
+.HomeSpacer {
+  position: relative;
+  height: 180px;
+
+  &_transitionOutside {
+    position: absolute;
+    height: 38px;
+    width: 173px;
+    border-bottom-right-radius: 38px;
+  }
+
+  &_transitionInside {
+    position: absolute;
+    height: 34px;
+    width: 34px;
+    background: $grey-90;
+    border-bottom-right-radius: 34px;
+  }
+
+  &_separator {
+    position: absolute;
+    height: 4px;
+    width: calc(#{100%} - #{76px});
+  }
+
+  &_extension {
+    position: absolute;
+    height: 54px;
+    width: 4px;
+  }
+
+  &_borderRadius {
+    position: absolute;
+    height: 34px;
+    width: 34px;
+    border-color: var(--spacer-start-color);
+    border-style: solid;
+
+    &--left-down {
+      left: 0;
+      border-width: 4px 0 0 4px;
+      border-top-left-radius: 36px;
+    }
+
+    &--right-down {
+      right: 0;
+      border-width: 4px 4px 0 0;
+      border-top-right-radius: 36px;
+    }
+
+    &--down-right {
+      left: 0;
+      border-width: 0 0 4px 4px;
+      border-bottom-left-radius: 36px;
+    }
+
+    &--down-left {
+      right: 0;
+      border-width: 0 4px 4px 0;
+      border-bottom-right-radius: 36px;
+    }
+  }
+
+  &--bg-start {
+    background: var(--spacer-start-color);
+  }
+
+  &--bg-end {
+    background: var(--spacer-end-color);
+  }
+
+  &--border-start {
+    border-color: var(--spacer-start-color);
+  }
+
+  &--border-end {
+    border-color: var(--spacer-end-color);
+  }
+
+  &--grad-to-left {
+    background: linear-gradient(to left, var(--spacer-start-color), var(--spacer-end-color));
+  }
+
+  &--grad-to-right {
+    background: linear-gradient(to right, var(--spacer-start-color), var(--spacer-end-color));
+  }
+}
+
+#HomeSpacer--1 {
+  --spacer-start-color: #{$purple-10};
+  --spacer-end-color: #{$purple-10};
+  height: 126px;
+
+  .HomeSpacer_transitionInside,
+  .HomeSpacer_transitionOutside {
+    left: calc(50% - 21px);
+  }
+
+  .HomeSpacer_separator {
+    top: 34px;
+    left: 38px;
+    width: calc(50% - 59px);
+  }
+
+  .HomeSpacer_borderRadius--left-down {
+    top: 34px;
+  }
+
+  .HomeSpacer_extension.HomeSpacer--bg-end {
+    top: 72px;
+  }
+}
+
+#HomeSpacer--2 {
+  --spacer-start-color: #{$purple-10};
+  --spacer-end-color: #{$gold-10};
+
+  .HomeSpacer_borderRadius--down-right {
+    top: 54px;
+  }
+
+  .HomeSpacer_separator {
+    top: 88px;
+    left: 38px;
+  }
+
+  .HomeSpacer_borderRadius--right-down {
+    top: 88px;
+    right: 0;
+  }
+
+  .HomeSpacer_extension.HomeSpacer--bg-end {
+    top: 126px;
+    right: 0;
+  }
+}
+
+#HomeSpacer--3 {
+  --spacer-start-color: #{$gold-10};
+  --spacer-end-color: #{$blue-10};
+
+  .HomeSpacer_extension.HomeSpacer--bg-start {
+    right: 0;
+  }
+
+  .HomeSpacer_borderRadius--down-left {
+    top: 54px;
+    right: 0;
+  }
+
+  .HomeSpacer_separator {
+    top: 88px;
+    left: 38px;
+  }
+
+  .HomeSpacer_borderRadius--left-down {
+    top: 88px;
+  }
+
+  .HomeSpacer_extension.HomeSpacer--bg-end {
+    top: 126px;
+  }
+}
+
+#HomeSpacer--4 {
+  --spacer-start-color: #{$blue-10};
+  --spacer-end-color: #{$grey-80};
+
+  .HomeSpacer_borderRadius--down-right {
+    top: 54px;
+  }
+
+  .HomeSpacer_separator {
+    top: 88px;
+    left: 38px;
+    width: 150px;
+  }
+
+  .HomeSpacer_borderRadius--right-down {
+    top: 88px;
+    left: 188px;
+  }
+
+  .HomeSpacer_extension.HomeSpacer--bg-end {
+    top: 126px;
+    left: 222px;
   }
 }
 
 #home-content {
   font-size: font-size($font-baseline-28);
   line-height: line-height($font-baseline-28);
-
-  .container {
-    padding: 2em 0;
-  }
-
-  h2 {
-    font-size: font-size($font-baseline-48);
-    line-height: line-height($font-baseline-48);
-    margin-top: 0;
-    margin-left: -0.15em;
-
-    a, a:hover {
-      background-color: $t;
-      background-size: calc(100% - 1em) 0.9em;
-      background-repeat: no-repeat;
-      border: none;
-      transition: background-size 0.3s ease;
-    }
-
-    a:hover {
-      background-size: 100% 0.9em;
-    }
-
-    .icon {
-      margin-left: 0.15em;
-    }
-  }
-
-  p:last-child {
-    margin-bottom: 0;
-  }
-
-  .link-more {
-    font-size: font-size($font-baseline-24);
-    padding: 0 0.15em;
-  }
+  margin: auto;
 }
 
-.icon-link {
-  .icon {
-    height: 0.5em;
-    vertical-align: middle;
-    fill: currentColor;
-    padding-right: 0.2em;
-    @include transform(translateX(0));
-    transition: 0.3s ease;
+#questions {
+  border-left: 4px solid $purple-10;
+
+  .HomeSection_title {
+    top: 0;
+    left: 0;
+    transform: rotate(-90deg) translateX(-100%);
+    transform-origin: 0 0;
   }
 
-  &:hover .icon {
-    @include transform(translateX(0.2em));
-  }
-}
-
-@include keyframes(countdown) {
-  0% {
-    background-size: 0 0;
-    pointer-events: none;
-  }
-  5% {
-    background-size: 0 0.3em;
-    pointer-events: none;
-  }
-  5.5%, 94.5% {
-    pointer-events: all;
-  }
-  95% {
-    background-size: 100% 0.3em;
-    pointer-events: none;
-  }
-  to {
-    background-size: 100% 0;
-    pointer-events: none;
-  }
-}
-
-@include keyframes(live) {
-  from {
-    opacity: 1;
-    @include transform(scale(0));
+  p {
+    margin: 0;
+    font-size: font-size($font-baseline-36);
+    line-height: line-height($font-baseline-36);
   }
 
-  to {
-    opacity: 0;
-    @include transform(scale(3));
-  }
-}
-
-#vision {
-  .highlight {
-    background-image: linear-gradient(to bottom, transparentize($red, 0.9), transparentize($red, 0.9));
-  }
-
-  .link-more {
-    background-color: transparentize($red, 0.9);
-    border-bottom-color: transparentize($red-80, 0.3);
-
-    &:hover {
-      background-color: transparentize($red, 0.9);
-      border-bottom-color: $red-80;
-    }
+  .HomeSection_link {
+    color: $purple-10;
   }
 }
 
 #gospel {
-  background-color: $aqua-40;
+  border-right: 4px solid $gold-10;
 
-  .highlight {
-    background-image: linear-gradient(to bottom, $aqua, $aqua);
+  .HomeSection_title {
+    top: 0;
+    right: 0;
+    transform: rotate(90deg) translateX(100%);
+    transform-origin: 100% 0;
+  }
+
+  ol {
+    list-style: none;
+    counter-reset: gospel-list-counter;
+    padding-left: 0;
+    margin: 0;
   }
 
   li {
-    margin-bottom: 0.5em;
+    counter-increment: gospel-list-counter;
+    font-size: font-size($font-baseline-36);
+    line-height: line-height($font-baseline-48);
   }
 
-  .link-more {
-    background-color: $aqua;
-    border-bottom-color: transparentize($aqua-90, 0.3);
-
-    &:hover {
-      background-color: $aqua;
-      border-bottom-color: $aqua-90;
-    }
-  }
-}
-
-#events {
-  background-color: transparentize($red-90, 0.9);
-
-  .highlight {
-    background-image: linear-gradient(to bottom, transparentize($red-70, 0.8), transparentize($red-70, 0.8));
+  li::before {
+    content: counter(gospel-list-counter) ". ";
+    color: $gold-40;
+    font-weight: bold;
+    font-feature-settings: "tnum";
   }
 
-  .events-container {
-    flex-wrap: wrap;
-    margin-top: -1.5em;
-
-    h3 {
-      color: $quartz;
-      font-size: font-size($font-baseline-20);
-      text-transform: uppercase;
-      margin-top: 0;
-    }
-
-    a {
-      background: none;
-      border-bottom-color: transparentize($red-90, 0.4);
-    }
-
-    a:hover {
-      background: none;
-      border-bottom-color: $red-90;
-    }
-  }
-
-  .ongoing-events,
-  .upcoming-events {
-    flex: 1 0 320px;
-    margin-top: 1.5em;
-  }
-
-  .link-more {
-    background-color: transparentize($red-70, 0.8);
-    border-bottom-color: transparentize($red-90, 0.4);
-
-    &:hover {
-      background-color: transparentize($red-70, 0.8);
-      border-bottom-color: $red-90;
-    }
+  .HomeSection_link {
+    color: $gold-10;
   }
 }
 
 #connect {
-  background-color: transparentize($aqua-90, 0.85);
+  border-left: 4px solid $blue-10;
 
-  .highlight {
-    background-image: linear-gradient(to bottom, transparentize($aqua-70, 0.8), transparentize($aqua-70, 0.8));
+  .HomeSection_title {
+    top: 0;
+    left: 0;
+    transform: rotate(-90deg) translateX(-100%);
+    transform-origin: 0 0;
   }
 
-  @media (min-width: $tablet-min-bp) {
-    .connect-container {
-      text-align: center;
+  p {
+    margin: 0;
+    font-size: font-size($font-baseline-36);
+    line-height: line-height($font-baseline-36);
+  }
+
+  .HomeSection_link {
+    color: $blue-10;
+
+    & ~ .HomeSection_link {
+      margin-top: 0;
     }
   }
 }
 
-#contact {
-  .highlight {
-    background-image: linear-gradient(to bottom, transparentize($quartz-10, 0.5), transparentize($quartz-10, 0.5));
-  }
+#main-footer {
+  margin: 0;
 }
