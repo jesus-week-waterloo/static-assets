@@ -71,7 +71,7 @@ if (window.events && window.eventsURLs) {
 </ul>`)
     } else {
       toast.classList.add('text-center');
-      $(toast, '.container').innerHTML = '<em>Thanks for being a part of Jesus Week 2019!</em>';
+      $(toast, '.container').innerHTML = '<em><strong>What kind of King is this?</strong> Stay tuned for Jesus Week Fall 2019.</em>';
     }
 
     toast.insertAdjacentHTML('beforeend', `<style>@-webkit-keyframes home-events-marquee {
