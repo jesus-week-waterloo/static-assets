@@ -22,8 +22,10 @@ body {
   height: 100%;
   min-height: 100vh;
 
-  &.overflow-disabled {
-    overflow: hidden;
+  @media (max-width: #{$tablet-max-bp}) {
+    &.menu-open {
+      overflow: hidden;
+    }
   }
 }
 

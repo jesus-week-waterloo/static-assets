@@ -5,7 +5,7 @@ import Tabber from "@js/modules/tabber.js";
 import '@css/index.scss';
 
 function closeMenu() {
-  document.body.classList.remove('overflow-disabled');
+  document.body.classList.remove('menu-open');
   $('#main-nav').classList.remove('menu-open');
   $('#toggle-main-nav').classList.remove('menu-open');
   $('#main-header .logo').classList.remove('menu-open');
@@ -14,7 +14,7 @@ function closeMenu() {
 }
 
 function openMenu() {
-  document.body.classList.add('overflow-disabled');
+  document.body.classList.add('menu-open');
   $('#main-nav').classList.add('menu-open');
   $('#toggle-main-nav').classList.add('menu-open');
   $('#main-header .logo').classList.add('menu-open');

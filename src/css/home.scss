@@ -1,14 +1,21 @@
-.layout-home #content {
-  background: $grey-90;
-  color: $white;
-}
+.layout-home {
+  body {
+    overflow-x: hidden;
+  }
 
-.layout-home .container {
-  max-width: 1440px;
-}
+  #content {
+    background: $grey-90;
+    color: $white;
+  }
 
-.layout-home .sub-container {
-  max-width: 1024px;
+  .container {
+    max-width: 1440px;
+  }
+
+  .sub-container {
+    width: calc(100% - 144px);
+    max-width: 1024px;
+  }
 }
 
 .HomeTitle {
@@ -19,37 +26,133 @@
   color: $white;
 
   &_title {
-    font-size: font-size($font-baseline-64);
-    line-height: line-height($font-baseline-64);
+    font-size: font-size($font-baseline-80);
+    line-height: line-height($font-baseline-80);
     font-weight: 600;
     text-transform: uppercase;
-    margin-top: -1em;
-    margin-left: -0.15em;
-    z-index: $z2;
+    margin-top: -2.5rem;
+    z-index: $z0;
   }
 
   &_textBackground {
-    background: $purple-10;
     color: $purple-90;
-    padding: 0 4px;
-    margin: 0 -4px;
 
-    @media (min-width: $tablet-min-bp) {
-      padding: 0;
-      margin: 0;
+    @media (max-width: $tablet-max-bp) {
+      background: $purple-10;
+      padding: 0 .1em;
+      margin: 0 -.1em;
     }
   }
 
   &_backgroundQuestions {
-    z-index: $z1;
+    position: absolute;
+    top: -#{(2.05*line-height($font-baseline-24) + 2*font-size($font-baseline-24))};
+    left: -5000vw;
+    right: -5000vw;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: $grey-60;
+    font-family: $display-font-family;
+    font-weight: 200;
+    font-size: 10vh;
+    // mix-blend-mode: difference;
+    opacity: .8;
+  }
+
+  &_backgroundQuestionsRow {
+    display: flex;
+
+    p {
+      padding-right: 1ch;
+      margin: 0;
+      transform: translateX(0);
+      animation: infinite linear;
+    }
+
+    &:nth-child(odd) p {
+      animation-name: row-marquee-forwards;
+    }
+
+    &:nth-child(even) p {
+      animation-name: row-marquee-backwards;
+    }
+
+    @keyframes row-marquee-forwards {
+      from { transform: translateX(0) }
+      to { transform: translateX(100%) }
+    }
+
+    @keyframes row-marquee-backwards {
+      from { transform: translateX(0) }
+      to { transform: translateX(-100%) }
+    }
+
+    &--1 p {
+      animation-duration: 48s;
+    }
+
+    &--2 {
+      transform: translateX(300px);
+
+      p {
+        animation-duration: 40s;
+      }
+    }
+
+    &--3 {
+      transform: translateX(-300px);
+
+      p {
+        animation-duration: 44s;
+      }
+    }
+
+    &--4 {
+      transform: translateX(100px);
+
+      p {
+        animation-duration: 48s;
+      }
+    }
+
+    &--5 {
+      transform: translateX(-100px);
+
+      p {
+        animation-duration: 52s;
+      }
+    }
+
+    &--6 p {
+      animation-duration: 54s;
+    }
+
+    &--7 {
+      transform: translateX(-200px);
+
+      p {
+        animation-duration: 44s;
+      }
+    }
+
+    &--8 {
+      transform: translateX(200px);
+
+      p {
+        animation-duration: 44s;
+      }
+    }
   }
 
   &_racingStripe {
     position: absolute;
-    top: -#{(2.05*line-height($font-baseline-24) + 2*font-size($font-baseline-24))};
-    bottom: 0;
-    left: calc(#{50%} + #{13px});
-    width: 139px;
+    top: calc(#{50%} - #{12.5em});
+    left: calc(#{50%} + #{.85em});
+    height: 20em;
+    width: 11.55em;
     background: $purple-10;
   }
 
@@ -68,8 +171,17 @@
 
   &_title {
     position: absolute;
+    font-size: font-size($font-baseline-44);
+    line-height: line-height($font-baseline-48);
     text-transform: uppercase;
     margin: 0;
+  }
+
+  &_content {
+    font-family: $display-font-family;
+    font-weight: 500;
+    font-size: font-size($font-baseline-36);
+    line-height: line-height($font-baseline-36);
   }
 
   &_link {
@@ -92,26 +204,15 @@
       transform: translateX(.5em);
     }
   }
+
+  p {
+    margin: 0;
+  }
 }
 
 .HomeSpacer {
   position: relative;
   height: 180px;
-
-  &_transitionOutside {
-    position: absolute;
-    height: 38px;
-    width: 173px;
-    border-bottom-right-radius: 38px;
-  }
-
-  &_transitionInside {
-    position: absolute;
-    height: 34px;
-    width: 34px;
-    background: $grey-90;
-    border-bottom-right-radius: 34px;
-  }
 
   &_separator {
     position: absolute;
@@ -187,15 +288,10 @@
   --spacer-end-color: #{$purple-10};
   height: 126px;
 
-  .HomeSpacer_transitionInside,
-  .HomeSpacer_transitionOutside {
-    left: calc(50% - 21px);
-  }
-
   .HomeSpacer_separator {
     top: 34px;
     left: 38px;
-    width: calc(50% - 59px);
+    width: 100vw;
   }
 
   .HomeSpacer_borderRadius--left-down {
@@ -284,8 +380,6 @@
 }
 
 #home-content {
-  font-size: font-size($font-baseline-28);
-  line-height: line-height($font-baseline-28);
   margin: auto;
 }
 
@@ -299,10 +393,8 @@
     transform-origin: 0 0;
   }
 
-  p {
-    margin: 0;
-    font-size: font-size($font-baseline-36);
-    line-height: line-height($font-baseline-36);
+  .HomeSection_content p:not(:last-child) {
+    margin-bottom: .3em;
   }
 
   .HomeSection_link {
@@ -323,21 +415,26 @@
   ol {
     list-style: none;
     counter-reset: gospel-list-counter;
-    padding-left: 0;
+    padding-left: 1.2em;
     margin: 0;
   }
 
   li {
-    counter-increment: gospel-list-counter;
-    font-size: font-size($font-baseline-36);
+    position: relative;
     line-height: line-height($font-baseline-48);
+    counter-increment: gospel-list-counter;
   }
 
   li::before {
-    content: counter(gospel-list-counter) ". ";
+    position: absolute;
+    left: -1.3em;
+    width: 1em;
+    content: counter(gospel-list-counter) ".  ";
     color: $gold-40;
+    font-family: $font-family;
     font-weight: bold;
     font-feature-settings: "tnum";
+    text-align: right;
   }
 
   .HomeSection_link {
@@ -355,21 +452,15 @@
     transform-origin: 0 0;
   }
 
-  p {
-    margin: 0;
-    font-size: font-size($font-baseline-36);
-    line-height: line-height($font-baseline-36);
-  }
-
   .HomeSection_link {
     color: $blue-10;
 
     & ~ .HomeSection_link {
-      margin-top: 0;
+      margin-top: .5em;
     }
   }
 }
 
-#main-footer {
+.layout-home #main-footer {
   margin: 0;
 }

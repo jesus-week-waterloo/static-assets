@@ -30,6 +30,10 @@
     border: none;
   }
 
+  svg {
+    height: 1em;
+  }
+
   .byline {
     font-size: font-size($font-baseline-20);
     line-height: line-height($font-baseline-20);
@@ -108,6 +112,7 @@
     }
 
     &.menu-open {
+      z-index: $z-1;
       @include transform(translateY(0));
     }
   }
@@ -120,7 +125,7 @@
 
   #main-nav {
     margin-left: auto;
-  
+
     ul {
       display: flex;
     }

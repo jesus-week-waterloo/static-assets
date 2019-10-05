@@ -30,15 +30,15 @@ export class RecentEventViewer extends EventViewer {
 
     for (const id in this.events) {
       const event = this.events[id],
-            times = event.Time.split('-')
+            times = event.Time[document.documentElement.lang].split('-')
             .map(t => /^\d+$/.test(t) ? t + 'pm' : t)
             .map(t => (parseInt(t.slice(0, 2)) + (~t.indexOf('pm') ? 12 : 0)) + ':' + (isNaN(parseInt(t.slice(2, 4))) ? '00' : t.slice(2, 4)));
   
       if (event.hasOwnProperty('Dates')) {
         // find date closest to today
         for (const d of event.Dates) {
-          const startTime = new Date(d + ' ' + times[0]),
-                endTime = new Date(d + ' ' + times[1]);
+          const startTime = new Date(d[document.documentElement.lang] + ' ' + times[0]),
+                endTime = new Date(d[document.documentElement.lang] + ' ' + times[1]);
 
           if (startTime <= today && today <= endTime) {
             this.recentEvents.ongoing.push(Object.assign({ id }, event, {
@@ -57,8 +57,8 @@ export class RecentEventViewer extends EventViewer {
           }
         }
       } else {
-        const startTime = new Date(event.Date + ' ' + times[0]),
-              endTime = new Date(event.Date + ' ' + times[1]);
+        const startTime = new Date(event.Date[document.documentElement.lang] + ' ' + times[0]),
+              endTime = new Date(event.Date[document.documentElement.lang] + ' ' + times[1]);
 
         if (startTime <= today && today <= endTime) {
           this.recentEvents.ongoing.push(Object.assign({ id }, event, {
