@@ -3,11 +3,6 @@
     overflow-x: hidden;
   }
 
-  #content {
-    background: $grey-90;
-    color: $white;
-  }
-
   .container {
     max-width: 1440px;
   }
@@ -19,8 +14,6 @@
 }
 
 .HomeTitle {
-  position: relative;
-  height: calc(#{100vh} - #{(2.05*line-height($font-baseline-24) + 2*font-size($font-baseline-24))});
   justify-content: center;
   background-color: $grey-90;
   color: $white;
@@ -28,7 +21,6 @@
   &_title {
     font-size: font-size($font-baseline-80);
     line-height: line-height($font-baseline-80);
-    font-weight: 600;
     text-transform: uppercase;
     margin-top: -2.5rem;
     z-index: $z0;
@@ -158,10 +150,6 @@
 
   @media (min-width: $tablet-min-bp) {
     align-items: center;
-
-    &_title {
-      margin-left: 0;
-    }
   }
 }
 

@@ -1,14 +1,15 @@
 export class EventViewer {
   constructor(json) {
     this.events = json;
+    this.lang = document.documentElement.lang;
   }
 
   format(date) {
-    return `${('0' + (date.getMonth() + 1)).slice(-2)}.${('0' + date.getDate()).slice(-2)}.${date.getFullYear()}`;
+    return new Intl.DateTimeFormat(this.lang, { month: 'short', day: '2-digit' }).format(date);
   }
 
   formatShort(date) {
-    return ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][date.getDay()] + '.';
+    return new Intl.DateTimeFormat(this.lang, { weekday: 'short' }).format(date);
   }
 
   render(templ) {
@@ -30,18 +31,19 @@ export class RecentEventViewer extends EventViewer {
 
     for (const id in this.events) {
       const event = this.events[id],
-            times = event.Time[document.documentElement.lang].split('-')
-            .map(t => /^\d+$/.test(t) ? t + 'pm' : t)
-            .map(t => (parseInt(t.slice(0, 2)) + (~t.indexOf('pm') ? 12 : 0)) + ':' + (isNaN(parseInt(t.slice(2, 4))) ? '00' : t.slice(2, 4)));
+            times = event.canonicalTime.split('-');
   
-      if (event.hasOwnProperty('Dates')) {
+      if (event.hasOwnProperty('dates')) {
         // find date closest to today
-        for (const d of event.Dates) {
-          const startTime = new Date(d[document.documentElement.lang] + ' ' + times[0]),
-                endTime = new Date(d[document.documentElement.lang] + ' ' + times[1]);
+        for (const d of event.canonicalDates) {
+          const startTime = new Date(d + ' ' + times[0]),
+                endTime = new Date(d + ' ' + times[1]);
 
           if (startTime <= today && today <= endTime) {
             this.recentEvents.ongoing.push(Object.assign({ id }, event, {
+              title: event.title[this.lang],
+              time: event.time[this.lang],
+              description: event.description[this.lang],
               formattedDate: this.format(startTime),
               formattedShortDate: this.formatShort(startTime),
               startTime, endTime
@@ -49,6 +51,9 @@ export class RecentEventViewer extends EventViewer {
           } else if (startTime > today && 
               (startTime - today < 86400000 || (today.getHours() > 3 && startTime.getDate() - today.getDate() == 1))) {
             this.recentEvents.upcoming.push(Object.assign({ id }, event, {
+              title: event.title[this.lang],
+              time: event.time[this.lang],
+              description: event.description[this.lang],
               formattedDate: this.format(startTime),
               formattedShortDate: this.formatShort(startTime),
               startTime, endTime
@@ -57,11 +62,14 @@ export class RecentEventViewer extends EventViewer {
           }
         }
       } else {
-        const startTime = new Date(event.Date[document.documentElement.lang] + ' ' + times[0]),
-              endTime = new Date(event.Date[document.documentElement.lang] + ' ' + times[1]);
+        const startTime = new Date(event.canonicalDate + ' ' + times[0]),
+              endTime = new Date(event.canonicalDate + ' ' + times[1]);
 
         if (startTime <= today && today <= endTime) {
           this.recentEvents.ongoing.push(Object.assign({ id }, event, {
+            title: event.title[this.lang],
+            time: event.time[this.lang],
+            description: event.description[this.lang],
             formattedDate: this.format(startTime),
             formattedShortDate: this.formatShort(startTime),
             startTime, endTime
@@ -69,6 +77,9 @@ export class RecentEventViewer extends EventViewer {
         } else if (startTime > today && 
             (startTime - today < 86400000 || (today.getHours() > 3 && startTime.getDate() - today.getDate() == 1))) {
           this.recentEvents.upcoming.push(Object.assign({ id }, event, {
+            title: event.title[this.lang],
+            time: event.time[this.lang],
+            description: event.description[this.lang],
             formattedDate: this.format(startTime),
             formattedShortDate: this.formatShort(startTime),
             startTime, endTime
