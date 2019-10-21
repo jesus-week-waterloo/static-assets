@@ -5,6 +5,10 @@
   z-index: $z2;
   padding: 1em 0;
 
+  .container {
+    position: relative;
+  }
+
   a {
     background: none;
     border-color: $t;
@@ -26,11 +30,17 @@
 #main-header .logo {
   flex: 1;
   opacity: 1;
-  transition: opacity 0.2s ease;
+  transition: opacity .2s ease;
 
   a {
     display: inline-block;
     border: none;
+    opacity: 1;
+    transition: .3s ease;
+
+    &:hover {
+      opacity: .8;
+    }
   }
 
   svg {
@@ -41,9 +51,58 @@
     font-size: font-size($font-baseline-20);
     line-height: line-height($font-baseline-20);
   }
+}
 
-  a:hover .byline {
-    text-decoration: underline;
+#change-lang-menu {
+  display: none;
+  position: absolute;
+  top: -.3em;
+  right: line-height($font-baseline-44);
+  background: $white;
+  font-size: font-size($font-baseline-20);
+  text-align: right;
+  list-style: none;
+  padding: .3em;
+  padding-top: 1.5em;
+  border: 1px solid $grey-10;
+  border-radius: .1em;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+
+  &:hover,
+  &.--focused {
+    display: block;
+  }
+
+  @at-root {
+    .theme-dark & {
+      background: $grey-80;
+      border-color: $grey-70;
+    }
+  }
+}
+
+#change-lang {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: line-height($font-baseline-44);
+  background: none;
+  border: none;
+  z-index: 1;
+  opacity: 1;
+  transition: .3s ease opacity;
+
+  &:hover {
+    opacity: .8;
+  }
+
+  .icon {
+    height: 1.5em;
+    fill: currentColor;
+  }
+
+  &:hover + #change-lang-menu {
+    display: block;
   }
 }
 
@@ -51,17 +110,20 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: line-height($font-baseline-24) + line-height($font-baseline-20);
+  width: line-height($font-baseline-44);
+  line-height: 0;
   background: none;
   border: none;
+  opacity: 1;
+  transition: .3s ease opacity;
+
+  &:hover {
+    opacity: .8;
+  }
 
   .icon {
     height: 1em;
     fill: currentColor;
-  }
-
-  &:hover .icon {
-    fill: $red-60;
   }
 
   .menu-close-icon {
@@ -140,7 +202,11 @@
     }
 
     li {
-      margin-left: 1em;
+      margin-right: 1em;
     }
   }
+}
+
+#close-main-nav a:not(:focus) {
+  color: $t;
 }

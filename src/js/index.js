@@ -5,22 +5,55 @@ import Tabber from "@js/modules/tabber.js";
 import '@css/index.scss';
 
 function closeMenu() {
+  const oldAltTitle = $('#toggle-main-nav').title;
+
   document.body.classList.remove('menu-open');
   $('#main-nav').classList.remove('menu-open');
+  $$('#main-nav a').forEach((a) => a.setAttribute('tabindex', -1));
+
   $('#toggle-main-nav').classList.remove('menu-open');
   $('#main-header .logo').classList.remove('menu-open');
-  $('#toggle-main-nav').setAttribute('title', 'Open navigation');
-  $('#toggle-main-nav').setAttribute('aria-label', 'Open navigation');
+  $('#toggle-main-nav').setAttribute('title', $('#toggle-main-nav').dataset.altTitle);
+  $('#toggle-main-nav').setAttribute('aria-label', $('#toggle-main-nav').dataset.altTitle);
+  $('#toggle-main-nav').dataset.altTitle = oldAltTitle;
 }
 
 function openMenu() {
+  const oldAltTitle = $('#toggle-main-nav').title;
+
   document.body.classList.add('menu-open');
   $('#main-nav').classList.add('menu-open');
+  $$('#main-nav a').forEach((a) => a.setAttribute('tabindex', 0));
+
   $('#toggle-main-nav').classList.add('menu-open');
   $('#main-header .logo').classList.add('menu-open');
-  $('#toggle-main-nav').setAttribute('title', 'Close navigation');
-  $('#toggle-main-nav').setAttribute('aria-label', 'Close navigation');
+  $('#toggle-main-nav').setAttribute('title', $('#toggle-main-nav').dataset.altTitle);
+  $('#toggle-main-nav').setAttribute('aria-label', $('#toggle-main-nav').dataset.altTitle);
+  $('#toggle-main-nav').dataset.altTitle = oldAltTitle;
 }
+
+$('#change-lang').addEventListener('click', (e) => {
+  e.preventDefault();
+
+  if ($('#change-lang-menu').classList.contains('--focused')) {
+    $('#change-lang-menu').classList.remove('--focused')
+  } else {
+    $('#change-lang-menu').classList.add('--focused')
+  }
+});
+
+$('#change-lang-menu').addEventListener('focusin', function(e) {
+  let checkFocus;
+
+  this.classList.add('--focused');
+
+  checkFocus = setInterval(() => {
+    if ($$(this, 'a').find((a) => a === document.activeElement) === undefined) {
+      this.classList.remove('--focused');
+      clearInterval(checkFocus);
+    } 
+  }, 1000)
+});
 
 $('#toggle-main-nav').addEventListener('click', (e) => {
   e.preventDefault();
@@ -30,6 +63,11 @@ $('#toggle-main-nav').addEventListener('click', (e) => {
   } else {
     openMenu();
   }
+});
+
+$('#close-main-nav a').addEventListener('click', (e) => {
+  e.preventDefault();
+  closeMenu();
 });
 
 $('#main-nav').addEventListener('click', function(e) {
