@@ -53,33 +53,29 @@ body {
 
 #access a,
 #access a:hover {
-  line-height: 3;
-  background-color: $aqua-40;
-  border-bottom-color: $aqua-70;
-}
-
-#access-skip {
   position: absolute;
   display: block;
   width: 100%;
   text-align: center;
+  line-height: 3;
+  background-color: $blue-10;
 }
 
-#access-skip:focus {
+#access a:focus {
   top: 20em;
 }
 
 .navigate-up {
   display: inline-block;
   background: none;
-  color: $quartz;
+  color: $grey-70;
   font-size: font-size($font-baseline-16);
   border-bottom-color: $t;
   margin-top: font-size($font-baseline-48)/2;
 
   &:hover {
     background: none;
-    border-bottom-color: $quartz;
+    border-bottom-color: currentColor;
   }
 
   + h1 {

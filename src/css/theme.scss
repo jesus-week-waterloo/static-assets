@@ -4,7 +4,14 @@
   }
 
   #main-footer {
+    background: $t;
+    color: $grey-90;
+    border-top: 1px solid $grey-10;
     margin-top: 0;
+
+    a {
+      color: $grey-90;
+    }
   }
 }
 
@@ -280,34 +287,47 @@
   }
 
   &_sideBySide {
+    display: flex;
     flex-wrap: wrap;
     align-items: center;
 
     > p,
     > .p-container {
-      flex: 2 0 500px;
+      flex: 2 0 300px;
     }
 
     blockquote {
       flex: 1 0 300px;
 
-      &:first-child {
-        margin-left: 0;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    @media (min-width: $tablet-min-bp) {
+      > p,
+      > .p-container {
+        flex-basis: 500px;
       }
 
-      &:last-child {
-        margin-right: 0;
+      > :first-child {
+        margin-right: 1em;
       }
-    }    
+
+      > :last-child {
+        margin-left: 1em;
+      }
+    }
   }
 
   blockquote {
     font-size: font-size($font-baseline-28);
     line-height: line-height($font-baseline-28);
+    font-style: normal;
   }
 
   cite {
     font-size: font-size($font-baseline-20);
+    font-style: italic;
   }
 
   &_authorityContainer {
@@ -342,7 +362,7 @@
 
 #preamble {
   color: $grey-90;
-  margin-top: calc(#{100vh} - #{(2.05*line-height($font-baseline-24) + 2*font-size($font-baseline-24)) / 2});
+  margin-top: calc(#{100vh} - #{(2.05*line-height($font-baseline-24) + 2*font-size($font-baseline-24))});
 
   .container > p {
     font-size: font-size($font-baseline-40);
@@ -354,7 +374,7 @@
   }
 
   @media (min-width: $tablet-min-bp) {
-    margin-top: 100vh;
+    // margin-top: 100vh;
 
     .container > p {
       font-size: font-size($font-baseline-48);

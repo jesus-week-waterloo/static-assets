@@ -1,32 +1,44 @@
 #main-footer {
-  background-color: $grey-80;
-  color: $white;
+  background: $grey-10;
   padding: 1em 0;
   margin-top: 2em;
+
+  @at-root {
+    .theme-dark & {
+      background: $grey-80;
+      color: $white;
+    }
+  }
 
   > div > div {
     flex: 1;
   }
 
   a {
-    color: $white;
+    color: $grey-90;
     background: none;
     border-bottom-color: $t;
+    opacity: 1;
+    transition: .3s ease;
 
     &:hover {
-      color: $red;
+      opacity: .8;
+    }
+
+    @at-root {
+      .theme-dark & {
+        color: $white;
+      }
     }
   }
 
   p a {
-    color: $white;
-    border-bottom-color: transparentize($red, 0.3);
     font-size: font-size($font-baseline-24);
     line-height: line-height($font-baseline-24);
 
     &:hover {
-      color: $white;
-      border-bottom-color: $red;
+      opacity: 1;
+      border-bottom-color: currentColor;
     }
   }
 

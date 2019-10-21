@@ -3,8 +3,8 @@
   margin: 1em 0;
 
   &-blue {
-    background-color: $aqua-80;
-    color: $aqua-40;
+    background-color: $blue-80;
+    color: $blue-10;
   }
 
   h2 {
@@ -28,7 +28,7 @@
     margin-left: -0.15em;
 
     mark {
-      color: $quartz-60;
+      color: $grey-70;
     }
   }
 
@@ -61,12 +61,12 @@
 }
 
 .layout-gospel .blue-btn {
-  color: $aqua-40;
-  background-image: linear-gradient(to bottom, $aqua-40, $aqua-40);
-  border-color: $aqua-40;
+  color: $blue-10;
+  background-image: linear-gradient(to bottom, $blue-10, $blue-10);
+  border-color: $blue-10;
 
   &:hover {
-    color: $aqua-90;
-    border-bottom-color: $aqua-40;
+    color: $blue-80;
+    border-bottom-color: $blue-10;
   }
 }

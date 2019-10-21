@@ -55,15 +55,15 @@ a {
 }
 
 .blue-btn {
-  color: $aqua-90;
+  color: $blue-90;
   background-color: $t;
-  background-image: linear-gradient(to bottom, $aqua-90, $aqua-90);
+  background-image: linear-gradient(to bottom, $blue-80, $blue-80);
   background-size: 0 100%;
   background-repeat: no-repeat;
   background-position: 0 0;
   font-size: font-size($font-baseline-24);
   padding: 0.5em 0.8em;
-  border: 0.1em solid $aqua-90;
+  border: 0.1em solid $blue-80;
   margin-right: 1em;
   margin-bottom: 0.5em;
   transition: 0.3s ease;
@@ -72,9 +72,9 @@ a {
   -webkit-box-decoration-break: clone;
 
   &:hover {
-    color: $aqua-40;
+    color: $blue-10;
     background-size: 100% 100%;
-    border-bottom-color: $aqua-90;
+    border-bottom-color: $blue-80;
   }
 }
 
@@ -94,14 +94,35 @@ a {
   }
 }
 
+blockquote {
+  text-align: right;
+  font-style: italic;
+
+  p {
+    text-align: left;
+  }
+
+  &.text-center p {
+    text-align: center;
+  }
+
+  &.text-right p {
+    text-align: right;
+  }
+
+  cite {
+    font-style: normal;
+  }
+}
+
 mark {
   background: none;
-  color: $red;
-  font-weight: 700;
+  color: $purple-70;
+  font-weight: 600;
 }
 
 hr {
   border: none;
-  border-bottom: 1px solid $quartz-50;
+  border-bottom: 1px solid $grey-50;
   margin: 1em 0;
 }
