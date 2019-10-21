@@ -14,10 +14,10 @@
   }
 
   .bg {
-    background-image: linear-gradient(to bottom, transparentize($quartz, 0.2), transparentize($quartz, 0.2));
-    background-size: 1em 0.9em;
-    background-repeat: repeat-x;
-    background-position: 0 100%;
+    // background-image: linear-gradient(to bottom, transparentize($quartz, 0.2), transparentize($quartz, 0.2));
+    // background-size: 1em 0.9em;
+    // background-repeat: repeat-x;
+    // background-position: 0 100%;
     padding: 0 0.15em;
 
     box-decoration-break: clone;
@@ -27,14 +27,14 @@
   .navigate-up {
     display: inline-block;
     background: none;
-    color: $quartz-10;
-    text-shadow: 0 0 2px $quartz-90;
+    color: $grey-10;
+    text-shadow: 0 0 2px $grey-90;
     font-size: font-size($font-baseline-16);
     border-bottom-color: $t;
     margin-top: font-size($font-baseline-48)/2;
 
     &:hover {
-      border-bottom-color: $quartz-10;
+      border-bottom-color: currentColor;
     }
   }
 }

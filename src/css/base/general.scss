@@ -123,6 +123,12 @@ mark {
 
 hr {
   border: none;
-  border-bottom: 1px solid $grey-50;
+  border-bottom: 1px solid $grey-30;
   margin: 1em 0;
+
+  @at-root {
+    .theme-dark & {
+      border-bottom-color: $grey-70;
+    }
+  }
 }

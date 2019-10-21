@@ -9,21 +9,22 @@
   &-tab {
     flex: 1 0 100px;
     background: none;
+    color: $grey-90;
     text-align: center;
     font-weight: 700;
     white-space: nowrap;
     padding: 1em;
-    border-bottom: 0.2em solid $quartz-20;
+    border-bottom: 0.2em solid $grey-20;
 
     &:hover {
       background: none;
-      border-bottom-color: transparentize($red-80, 0.6);
+      border-bottom-color: $blue-10;
     }
 
     &[data-active] {
-      background: transparentize($red-40, 0.9);
-      color: $red-90;
-      border-bottom-color: $red-80;
+      background: transparentize($blue-10, .5);
+      color: $blue-90;
+      border-bottom-color: $blue-80;
     }
   }
 

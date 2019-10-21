@@ -166,7 +166,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: transparentize($coal, 0.3);
+    background-color: transparentize($grey-90, 0.3);
     @include transform(translateY(-100vh));
 
     ul {
@@ -177,7 +177,7 @@
 
       @at-root {
         .theme-dark & {
-          background: $grey-90;
+          background: $grey-80;
         }
       }
     }
