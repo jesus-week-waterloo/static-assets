@@ -1,0 +1,454 @@
+.layout-theme {
+  #doc-main-content {
+    position: relative;
+  }
+
+  #main-footer {
+    margin-top: 0;
+  }
+}
+
+.ThemeBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: $z-1;
+
+  > * {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  &_image {
+    background-size: cover;
+    opacity: 0;
+    transition: .5s ease;
+  }
+
+  &_image-authority {
+    background-image: url("/uploads/Eugene_Delacroix_-_Christ_on_the_Sea_of_Galilee_-_Walters_37186.jpg");
+    background-position: 20% 70%;
+
+    [data-target="authority-verses"] & {
+      opacity: 1;
+    }
+  }
+
+  &_image-humbles {
+    background-image: url("/uploads/The_birth_of_Jesus.jpg");
+    background-position: center 90%;
+
+    [data-target="humbles-verse"] & {
+      opacity: 1;
+    }
+  }
+
+  &_image-suffering {
+    background-image: url("/uploads/Giovanni_Lanfranco_-_Miracle_of_the_Bread_and_Fish_-_WGA12454.jpg");
+    background-position: center top;
+
+    [data-target="suffering"] & {
+      opacity: 1;
+    }
+  }
+
+  &_image-sacrifice {
+    background-image: url("/uploads/Giovanni_Battista_Tiepolo_-_Christ_Carrying_the_Cross.jpg");
+    background-position: center 90%;
+
+    [data-target="sacrifice"] & {
+      opacity: 1;
+    }
+  }
+
+  &_overlay {
+    background: $white;
+    opacity: 1;
+    transition: .5s ease;
+
+    [data-target="authority"] & {
+      background: $gold-10;
+    }
+
+    [data-target="authority-verses"] & {
+      background: $blue-90;
+      opacity: .5;
+    }
+
+    [data-target="humbles-verse"] & {
+      background: $purple-10;
+      opacity: .9;
+    }
+
+    [data-target="suffering"] & {
+      background: $blue-90;
+      opacity: .7;
+    }
+
+    [data-target="sacrifice"] & {
+      background: $grey-90;
+      opacity: .7;
+    }
+  }
+}
+
+.ThemeTitle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  clip: rect(auto, auto, auto, auto); // helps us get the clipping effect for the title
+  justify-content: center;
+  background: $grey-90;
+  z-index: 1;
+
+  &_title {
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin-top: 2em;
+    will-change: transform, opacity;
+  }
+
+  &_titleQuestion {
+    font-size: font-size($font-baseline-32);
+    line-height: line-height($font-baseline-32);
+    font-weight: 500;
+
+    em {
+      color: $purple-10;
+      font-style: normal;
+    }
+  }
+
+  @media(min-width: $tablet-min-bp) {
+    &_title {
+      margin-top: 0;
+    }
+
+    &_titleQuestion {
+      font-size: font-size($font-baseline-44);
+      line-height: line-height($font-baseline-44);
+    }
+  }
+}
+
+.ThemeSideTitle {
+  max-width: calc(100vh - 1.5em);
+  font-size: font-size($font-baseline-28);
+  line-height: line-height($font-baseline-20);
+  color: $grey-90;
+  text-transform: uppercase;
+  margin: 0;
+  opacity: 0;
+  transition: color .5s ease, opacity .5s ease;
+
+  &--left {
+    position: sticky;
+    top: calc(100vh - 1em);
+    left: .3em;
+    transform-origin: 0 0;
+    transform: rotate(-90deg);
+  }
+
+  &--right {
+    position: fixed;
+    top: 1em;
+    right: .3em;
+    transform-origin: 100% 0;
+    transform: rotate(90deg) translateX(100%);
+  }
+
+  em {
+    font-style: normal;
+    transition: .5s ease;
+  }
+
+  [data-target="doc-title"] &,
+  [data-target="preamble"] & {
+    &--authority {
+      opacity: 1;
+    }
+
+    em {
+      color: $gold-70;
+    }
+  }
+
+  [data-target="authority"] & {
+    color: $gold-90;
+
+    &--authority {
+      opacity: 1;
+    }
+
+    em {
+      color: $gold-70;
+    }
+  }
+
+  [data-target="authority-verses"] & {
+    color: $white;
+
+    &--authority {
+      opacity: 1;
+    }
+
+    em {
+      color: $gold-20;
+    }
+  }
+
+  [data-target="humbles"] & {
+    &--humbles {
+      opacity: 1;
+    }
+
+    em {
+      color: $purple-60;
+    }
+  }
+
+  [data-target="humbles-verse"] & {
+    color: $purple-90;
+
+    &--humbles {
+      opacity: 1;
+    }
+
+    em {
+      color: $purple-50;
+    }
+  }
+
+  [data-target="suffering"] & {
+    color: $white;
+
+    &--suffering {
+      opacity: 1;
+    }
+
+    em {
+      color: $blue-20;
+    }
+  }
+
+  [data-target="sacrifice"] & {
+    color: $white;
+
+    &--sacrifice {
+      opacity: 1;
+    }
+
+    em {
+      color: $grey-30;
+    }
+  }
+
+  [data-target="conclusion"] & {
+    &--conclusion {
+      opacity: 1;
+    }
+
+    em {
+      color: $purple-70;
+    }
+  }
+
+  @media (max-width: $mobile-max-bp) {
+    display: none;
+  }
+}
+
+.ThemeSection {
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+  justify-content: center;
+  font-family: $display-font-family;
+  font-weight: 500;
+  font-size: font-size($font-baseline-32);
+  line-height: line-height($font-baseline-32);
+
+  .container {
+    padding-top: 10vh;
+    padding-bottom: 10vh
+  }
+
+  &_sideBySide {
+    flex-wrap: wrap;
+    align-items: center;
+
+    > p,
+    > .p-container {
+      flex: 2 0 500px;
+    }
+
+    blockquote {
+      flex: 1 0 300px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }    
+  }
+
+  blockquote {
+    font-size: font-size($font-baseline-28);
+    line-height: line-height($font-baseline-28);
+  }
+
+  cite {
+    font-size: font-size($font-baseline-20);
+  }
+
+  &_authorityContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(324px, 1fr));
+    grid-column-gap: 27px;
+    column-gap: 27px;
+  }
+
+  &_authorityVerse {
+    place-self: center;
+
+    cite {
+      color: $grey-20;
+    }
+  }
+
+  @media (min-width: $tablet-min-bp) {
+    font-size: font-size($font-baseline-36);
+    line-height: line-height($font-baseline-36);
+
+    blockquote {
+      font-size: font-size($font-baseline-32);
+      line-height: line-height($font-baseline-32);
+    }
+
+    cite {
+      font-size: font-size($font-baseline-24);
+    }
+  }
+}
+
+#preamble {
+  color: $grey-90;
+  margin-top: calc(#{100vh} - #{(2.05*line-height($font-baseline-24) + 2*font-size($font-baseline-24)) / 2});
+
+  .container > p {
+    font-size: font-size($font-baseline-40);
+    line-height: line-height($font-baseline-40);
+  }
+
+  .no-js & {
+    background: $white;
+  }
+
+  @media (min-width: $tablet-min-bp) {
+    margin-top: 100vh;
+
+    .container > p {
+      font-size: font-size($font-baseline-48);
+      line-height: line-height($font-baseline-48);
+    }
+  }
+}
+
+#authority {
+  color: $gold-90;
+
+  em {
+    color: $gold-70;
+    font-style: normal;
+  }
+
+  .no-js & {
+    background: $gold-10;
+  }
+}
+
+#authority-verses {
+  em {
+    color: $gold-20;
+    font-style: normal;
+  }
+
+  .no-js & {
+    background: $blue-90;
+  }
+}
+
+#humbles {
+  color: $grey-90;
+
+  em {
+    color: $purple-60;
+    font-style: normal;
+  }
+
+  .no-js & {
+    background: $white;
+  }
+}
+
+#humbles-verse {
+  color: $purple-90;
+
+  blockquote {
+    font-size: font-size($font-baseline-36);
+    line-height: line-height($font-baseline-36);
+
+    @media (min-width: $tablet-min-bp) {
+      font-size: font-size($font-baseline-40);
+      line-height: line-height($font-baseline-40);
+    }
+  }
+
+  .no-js & {
+    background: $purple-10;
+  }
+}
+
+#suffering {
+  em {
+    color: $blue-20;
+    font-style: normal;
+  }
+
+  .no-js & {
+    background: $blue-90;
+  }
+}
+
+#sacrifice {
+  em {
+    color: $gold-20;
+    font-style: normal;
+  }
+
+  .no-js & {
+    background: $grey-90;
+  }
+}
+
+#conclusion {
+  color: $grey-90;
+
+  em {
+    color: $purple-70;
+    font-style: normal;
+  }
+
+  .no-js & {
+    background: $white;
+  }
+}

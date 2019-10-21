@@ -2,20 +2,23 @@
   position: relative;
   font-size: font-size($font-baseline-24);
   line-height: line-height($font-baseline-24);
-  z-index: $z1;
+  z-index: $z2;
   padding: 1em 0;
 
   a {
     background: none;
-    border-color: $grey-90;
-    color: $grey-10;
+    border-color: $t;
+    color: $grey-90;
 
-    &:hover {
-      border-color: $grey-10;
+    @at-root {
+      .theme-dark & {
+        color: $grey-10;
+      }
     }
 
+    &:hover,
     &.current-page {
-      border-color: $grey-20;
+      border-color: currentColor;
     }
   }
 }
@@ -40,7 +43,7 @@
   }
 
   a:hover .byline {
-    color: $purple-20;
+    text-decoration: underline;
   }
 }
 
@@ -105,10 +108,16 @@
     @include transform(translateY(-100vh));
 
     ul {
-      background: $grey-90;
+      background: $white;
       text-align: center;
       padding-top: 4em;
       padding-bottom: 1em;
+
+      @at-root {
+        .theme-dark & {
+          background: $grey-90;
+        }
+      }
     }
 
     &.menu-open {
