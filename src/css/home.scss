@@ -1,5 +1,5 @@
 .layout-home {
-  body {
+  &, body {
     overflow-x: hidden;
   }
 
@@ -8,8 +8,16 @@
   }
 
   .sub-container {
-    width: calc(100% - 144px);
+    width: calc(100% - 40px);
     max-width: 1024px;
+
+    @media (min-width: $tablet-min-bp) {
+      width: calc(100% - 144px);
+    }
+  }
+
+  #main-footer .postscript a {
+    color: $blue-20 !important;
   }
 }
 
@@ -22,17 +30,50 @@
     font-size: font-size($font-baseline-80);
     line-height: line-height($font-baseline-80);
     text-transform: uppercase;
+    margin: 0 5vw;
     margin-top: -2.5rem;
     z-index: $z0;
   }
 
   &_textBackground {
+    position: relative;
     color: $purple-90;
+    background: $purple-10;
+    white-space: pre;
+    padding: 0 .1em;
+    margin: 0 -.1em;
+
+    @media (min-width: $desktop-min-bp) {
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        background: $purple-10;
+      }
+
+      &::before {
+        top: -1.5em;
+        bottom: 100%;
+      }
+
+      &::after {
+        top: 100%;
+        bottom: -1.5em;
+      }
+    }
+  }
+
+  &_crown {
+    position: absolute;
+    top: -.5em;
+    left: calc(50% - .4em);
+    width: .8em;
+    height: auto;
 
     @media (max-width: $tablet-max-bp) {
-      background: $purple-10;
-      padding: 0 .1em;
-      margin: 0 -.1em;
+      display: none;
     }
   }
 
@@ -50,8 +91,13 @@
     font-family: $display-font-family;
     font-weight: 200;
     font-size: 10vh;
-    // mix-blend-mode: difference;
     opacity: .8;
+
+    @at-root {
+      :root[lang|='zh'] & {
+        font-weight: 100;
+      }
+    }
   }
 
   &_backgroundQuestionsRow {
@@ -139,15 +185,6 @@
     }
   }
 
-  &_racingStripe {
-    position: absolute;
-    top: calc(#{50%} - #{12.5em});
-    left: calc(#{50%} + #{.85em});
-    height: 20em;
-    width: 11.55em;
-    background: $purple-10;
-  }
-
   @media (min-width: $tablet-min-bp) {
     align-items: center;
   }
@@ -158,11 +195,16 @@
   box-sizing: border-box;
 
   &_title {
-    position: absolute;
     font-size: font-size($font-baseline-44);
     line-height: line-height($font-baseline-48);
     text-transform: uppercase;
-    margin: 0;
+    margin-top: -.5em;
+
+    @media (min-width: $tablet-min-bp) {
+      position: absolute;
+      top: 0;
+      margin: 0;
+    }
   }
 
   &_content {
@@ -353,17 +395,17 @@
   .HomeSpacer_separator {
     top: 88px;
     left: 38px;
-    width: 150px;
+    width: 200px;
   }
 
   .HomeSpacer_borderRadius--right-down {
     top: 88px;
-    left: 188px;
+    left: 238px;
   }
 
   .HomeSpacer_extension.HomeSpacer--bg-end {
     top: 126px;
-    left: 222px;
+    left: 272px;
   }
 }
 
@@ -374,11 +416,12 @@
 #questions {
   border-left: 4px solid $purple-10;
 
-  .HomeSection_title {
-    top: 0;
-    left: 0;
-    transform: rotate(-90deg) translateX(-100%);
-    transform-origin: 0 0;
+  @media (min-width: $tablet-min-bp) {
+    .HomeSection_title {
+      left: 0;
+      transform: rotate(-90deg) translateX(-100%);
+      transform-origin: 0 0;
+    }
   }
 
   .HomeSection_content p:not(:last-child) {
@@ -393,11 +436,12 @@
 #gospel {
   border-right: 4px solid $gold-10;
 
-  .HomeSection_title {
-    top: 0;
-    right: 0;
-    transform: rotate(90deg) translateX(100%);
-    transform-origin: 100% 0;
+  @media (min-width: $tablet-min-bp) {
+    .HomeSection_title {
+      right: 0;
+      transform: rotate(90deg) translateX(100%);
+      transform-origin: 100% 0;
+    }
   }
 
   ol {
@@ -409,7 +453,7 @@
 
   li {
     position: relative;
-    line-height: line-height($font-baseline-48);
+    margin-bottom: .5em;
     counter-increment: gospel-list-counter;
   }
 
@@ -433,11 +477,12 @@
 #connect {
   border-left: 4px solid $blue-10;
 
-  .HomeSection_title {
-    top: 0;
-    left: 0;
-    transform: rotate(-90deg) translateX(-100%);
-    transform-origin: 0 0;
+  @media (min-width: $tablet-min-bp) {
+    .HomeSection_title {
+      left: 0;
+      transform: rotate(-90deg) translateX(-100%);
+      transform-origin: 0 0;
+    }
   }
 
   .HomeSection_link {
