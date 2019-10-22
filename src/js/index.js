@@ -32,14 +32,16 @@ function openMenu() {
   $('#toggle-main-nav').dataset.altTitle = oldAltTitle;
 }
 
-$('#change-lang').addEventListener('click', (e) => {
-  e.preventDefault();
+$('#change-lang').addEventListener('focus', () => {
+  $('#change-lang-menu').classList.add('--focused')
+});
 
-  if ($('#change-lang-menu').classList.contains('--focused')) {
-    $('#change-lang-menu').classList.remove('--focused')
-  } else {
-    $('#change-lang-menu').classList.add('--focused')
-  }
+$('#change-lang').addEventListener('blur', () => {
+  setTimeout(() => {
+    if ($$('#change-lang-menu a').find((a) => a === document.activeElement) === undefined) {
+      $('#change-lang-menu').classList.remove('--focused')
+    }
+  }, 100);
 });
 
 $('#change-lang-menu').addEventListener('focusin', function(e) {
@@ -52,7 +54,7 @@ $('#change-lang-menu').addEventListener('focusin', function(e) {
       this.classList.remove('--focused');
       clearInterval(checkFocus);
     } 
-  }, 1000)
+  }, 500);
 });
 
 $('#toggle-main-nav').addEventListener('click', (e) => {
@@ -68,6 +70,13 @@ $('#toggle-main-nav').addEventListener('click', (e) => {
 $('#close-main-nav a').addEventListener('click', (e) => {
   e.preventDefault();
   closeMenu();
+  $('#toggle-main-nav').focus();
+});
+
+$('#close-main-nav a').addEventListener('blur', () => {
+  if (document.body.classList.contains('menu-open')) {
+    $('#main-nav a').focus();
+  }
 });
 
 $('#main-nav').addEventListener('click', function(e) {

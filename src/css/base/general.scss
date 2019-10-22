@@ -52,6 +52,10 @@ a {
   display: inline-block;
   word-break: break-word;
   padding: .5em;
+
+  &[disabled] {
+    opacity: .5;
+  }
 }
 
 .blue-btn {

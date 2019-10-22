@@ -10,6 +10,17 @@
   h2 {
     margin-top: 0;
   }
+
+  .blue-btn {
+    color: $blue-10;
+    background-image: linear-gradient(to bottom, $blue-10, $blue-10);
+    border-color: $blue-10;
+
+    &:hover {
+      color: $blue-80;
+      border-bottom-color: $blue-10;
+    }
+  }
 }
 
 .gospel-container {
@@ -37,6 +48,7 @@
   }
 
   &-summary {
+    display: inline;
     background-color: $white;
     margin: 0;
     transition: opacity 0.3s ease;
@@ -47,6 +59,11 @@
     margin-bottom: -1em;
   }
 
+  &-source {
+    display: inline;
+    margin: 0;
+  }
+
   &.revealed &-summary {
     display: none;
   }
@@ -55,18 +72,13 @@
     display: block;
   }
 
+  &.revealed &-source {
+    display: block;
+    margin-right: 2em;
+    text-align: right;
+  }
+
   @media (min-width: $tablet-min-bp) {
     flex-basis: 320px;
-  }
-}
-
-.layout-gospel .blue-btn {
-  color: $blue-10;
-  background-image: linear-gradient(to bottom, $blue-10, $blue-10);
-  border-color: $blue-10;
-
-  &:hover {
-    color: $blue-80;
-    border-bottom-color: $blue-10;
   }
 }

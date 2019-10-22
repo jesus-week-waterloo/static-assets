@@ -65,6 +65,19 @@ body {
   top: 20em;
 }
 
+.accessibility-link {
+  color: currentColor;
+  font-size: inherit;
+  padding: 0;
+  cursor: pointer;
+
+  // 
+  &:focus {
+    outline: 1px dotted Highlight;
+    outline: 5px auto -webkit-focus-ring-color;
+  }
+}
+
 .navigate-up {
   display: inline-block;
   background: none;

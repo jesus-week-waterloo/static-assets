@@ -12,17 +12,17 @@
   a {
     background: none;
     border-color: $t;
-    color: $grey-90;
-
-    @at-root {
-      .theme-dark & {
-        color: $grey-10;
-      }
-    }
+    color: currentColor;
 
     &:hover,
     &.current-page {
       border-color: currentColor;
+    }
+  }
+
+  @at-root {
+    .theme-dark & {
+      color: $grey-10;
     }
   }
 }
@@ -57,7 +57,7 @@
   display: none;
   position: absolute;
   top: -.3em;
-  right: line-height($font-baseline-44);
+  right: line-height($font-baseline-48);
   background: $white;
   font-size: font-size($font-baseline-20);
   text-align: right;
@@ -85,7 +85,7 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: line-height($font-baseline-44);
+  width: line-height($font-baseline-48);
   background: none;
   border: none;
   z-index: 1;
@@ -101,7 +101,7 @@
     fill: currentColor;
   }
 
-  &:hover + #change-lang-menu {
+  &:hover + #change-lang-menu:not(.--focused) {
     display: block;
   }
 }
@@ -110,7 +110,7 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: line-height($font-baseline-44);
+  width: line-height($font-baseline-48);
   line-height: 0;
   background: none;
   border: none;
