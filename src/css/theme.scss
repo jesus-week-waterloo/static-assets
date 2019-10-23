@@ -4,13 +4,17 @@
   }
 
   #main-footer {
-    background: $t;
+    background: $grey-10;
     color: $grey-90;
-    border-top: 1px solid $grey-10;
     margin-top: 0;
 
     a {
       color: $grey-90;
+    }
+
+    .cross-vert,
+    .cross-horz {
+      background: $grey-20;
     }
   }
 }

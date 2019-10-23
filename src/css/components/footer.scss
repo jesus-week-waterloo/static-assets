@@ -1,4 +1,5 @@
 #main-footer {
+  position: relative;
   background: $grey-10;
   padding: 1em 0;
   margin-top: 2em;
@@ -10,7 +11,7 @@
     }
   }
 
-  > div > div {
+  .container > div {
     flex: 1;
   }
 
@@ -35,9 +36,10 @@
   .Footer_links {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     margin-left: -#{font-size($font-baseline-24)};
 
-    @media (min-width: $tablet-min-bp) {
+    @media (min-width: $desktop-min-bp) {
       flex-direction: row;
       justify-content: flex-end;
       align-items: center;
@@ -75,9 +77,46 @@
       flex: 1;
     }
   }
+
+  .cross-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+  }
+
+  .cross-vert,
+  .cross-horz {
+    position: absolute;
+    background: $grey-20;
+
+    @at-root {
+      .theme-dark & {
+        background: $grey-90;
+      }
+    }
+  }
+
+  @media (min-width: $desktop-min-bp) {
+    .cross-vert {
+      top: 0;
+      left: 14.5em;
+      bottom: 0;
+      width: 8px;
+    }
+
+    .cross-horz {
+      top: 2.5em;
+      left: 12em;
+      height: 8px;
+      width: calc(5em + 8px);
+    }
+  }
 }
 
-@media (min-width: $tablet-min-bp) {
+@media (min-width: $desktop-min-bp) {
   .mainscript {
     flex-direction: row;
   }

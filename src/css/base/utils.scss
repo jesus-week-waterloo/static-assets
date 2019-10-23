@@ -87,9 +87,24 @@
   line-height: line-height($font-baseline-28);
 }
 
+.font-32 {
+  font-size: font-size($font-baseline-32);
+  line-height: line-height($font-baseline-32);
+}
+
 .font-36 {
   font-size: font-size($font-baseline-36);
   line-height: line-height($font-baseline-36);
+}
+
+.font-40 {
+  font-size: font-size($font-baseline-40);
+  line-height: line-height($font-baseline-40);
+}
+
+.font-44 {
+  font-size: font-size($font-baseline-44);
+  line-height: line-height($font-baseline-44);
 }
 
 .font-48 {

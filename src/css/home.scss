@@ -246,44 +246,45 @@
 
   &_separator {
     position: absolute;
-    height: 4px;
-    width: calc(#{100%} - #{76px});
+    height: 8px;
+    width: calc(#{100%} - #{80px});
   }
 
   &_extension {
     position: absolute;
     height: 54px;
-    width: 4px;
+    width: 8px;
   }
 
   &_borderRadius {
     position: absolute;
-    height: 34px;
-    width: 34px;
+    height: 40px;
+    width: 40px;
+    box-sizing: border-box;
     border-color: var(--spacer-start-color);
     border-style: solid;
 
     &--left-down {
       left: 0;
-      border-width: 4px 0 0 4px;
+      border-width: 8px 0 0 8px;
       border-top-left-radius: 36px;
     }
 
     &--right-down {
       right: 0;
-      border-width: 4px 4px 0 0;
+      border-width: 8px 8px 0 0;
       border-top-right-radius: 36px;
     }
 
     &--down-right {
       left: 0;
-      border-width: 0 0 4px 4px;
+      border-width: 0 0 8px 8px;
       border-bottom-left-radius: 36px;
     }
 
     &--down-left {
       right: 0;
-      border-width: 0 4px 4px 0;
+      border-width: 0 8px 8px 0;
       border-bottom-right-radius: 36px;
     }
   }
@@ -320,7 +321,7 @@
 
   .HomeSpacer_separator {
     top: 34px;
-    left: 38px;
+    left: 40px;
     width: 100vw;
   }
 
@@ -342,12 +343,12 @@
   }
 
   .HomeSpacer_separator {
-    top: 88px;
-    left: 38px;
+    top: 86px;
+    left: 40px;
   }
 
   .HomeSpacer_borderRadius--right-down {
-    top: 88px;
+    top: 86px;
     right: 0;
   }
 
@@ -371,12 +372,12 @@
   }
 
   .HomeSpacer_separator {
-    top: 88px;
-    left: 38px;
+    top: 86px;
+    left: 40px;
   }
 
   .HomeSpacer_borderRadius--left-down {
-    top: 88px;
+    top: 86px;
   }
 
   .HomeSpacer_extension.HomeSpacer--bg-end {
@@ -393,19 +394,19 @@
   }
 
   .HomeSpacer_separator {
-    top: 88px;
-    left: 38px;
-    width: 200px;
+    top: 86px;
+    left: 40px;
+    width: calc(14.5em - 72px);
   }
 
   .HomeSpacer_borderRadius--right-down {
-    top: 88px;
-    left: 238px;
+    top: 86px;
+    left: calc(14.5em - 32px);
   }
 
   .HomeSpacer_extension.HomeSpacer--bg-end {
     top: 126px;
-    left: 272px;
+    left: 14.5em;
   }
 }
 
@@ -414,7 +415,7 @@
 }
 
 #questions {
-  border-left: 4px solid $purple-10;
+  border-left: 8px solid $purple-10;
 
   @media (min-width: $tablet-min-bp) {
     .HomeSection_title {
@@ -434,7 +435,7 @@
 }
 
 #gospel {
-  border-right: 4px solid $gold-10;
+  border-right: 8px solid $gold-10;
 
   @media (min-width: $tablet-min-bp) {
     .HomeSection_title {
@@ -475,7 +476,7 @@
 }
 
 #connect {
-  border-left: 4px solid $blue-10;
+  border-left: 8px solid $blue-10;
 
   @media (min-width: $tablet-min-bp) {
     .HomeSection_title {
