@@ -56,7 +56,7 @@
     .event-go-icon-left,
     .event-go-icon-right {
       opacity: 1;
-      @include transform(translateX(0));
+      transform: translateX(0);
     }
   }
 }
@@ -82,10 +82,10 @@
 
 .event-go-icon-left {
   margin-right: 0.1em;
-  @include transform(translateX(-0.3em));
+  transform: translateX(-0.3em);
 }
 
 .event-go-icon-right {
   margin-left: 0.1em;
-  @include transform(translateX(0.3em));
+  transform: translateX(0.3em);
 }
