@@ -4,84 +4,81 @@ import Tabber from "@js/modules/tabber.js";
 
 import '@css/index.scss';
 
-function closeMenu() {
-  const oldAltTitle = $('#toggle-main-nav').title;
+function closeMenu(btn, target) {
+  const oldAltTitle = btn.title;
 
-  document.body.classList.remove('menu-open');
-  $('#main-nav').classList.remove('menu-open');
-  $$('#main-nav a').forEach((a) => a.setAttribute('tabindex', -1));
+  document.body.classList.remove('menu-open', 'menu-open--' + btn.getAttribute('aria-controls'));
+  target.classList.remove('menu-open');
+  $$(target, 'a').forEach((a) => a.setAttribute('tabindex', -1));
 
-  $('#toggle-main-nav').classList.remove('menu-open');
-  $('#main-header .logo').classList.remove('menu-open');
-  $('#toggle-main-nav').setAttribute('title', $('#toggle-main-nav').dataset.altTitle);
-  $('#toggle-main-nav').setAttribute('aria-label', $('#toggle-main-nav').dataset.altTitle);
-  $('#toggle-main-nav').dataset.altTitle = oldAltTitle;
+  btn.classList.remove('menu-open');
+  btn.setAttribute('title', btn.dataset.altTitle);
+  btn.setAttribute('aria-label', btn.dataset.altTitle);
+  btn.dataset.altTitle = oldAltTitle;
 }
 
-function openMenu() {
-  const oldAltTitle = $('#toggle-main-nav').title;
+function openMenu(btn, target) {
+  const oldAltTitle = btn.title;
 
-  document.body.classList.add('menu-open');
-  $('#main-nav').classList.add('menu-open');
-  $$('#main-nav a').forEach((a) => a.setAttribute('tabindex', 0));
+  document.body.classList.add('menu-open', 'menu-open--' + btn.getAttribute('aria-controls'));
+  target.classList.add('menu-open');
+  $$(target, 'a').forEach((a) => a.setAttribute('tabindex', 0));
 
-  $('#toggle-main-nav').classList.add('menu-open');
-  $('#main-header .logo').classList.add('menu-open');
-  $('#toggle-main-nav').setAttribute('title', $('#toggle-main-nav').dataset.altTitle);
-  $('#toggle-main-nav').setAttribute('aria-label', $('#toggle-main-nav').dataset.altTitle);
-  $('#toggle-main-nav').dataset.altTitle = oldAltTitle;
+  btn.classList.add('menu-open');
+  btn.setAttribute('title', btn.dataset.altTitle);
+  btn.setAttribute('aria-label', btn.dataset.altTitle);
+  btn.dataset.altTitle = oldAltTitle;
 }
 
-$('#change-lang').addEventListener('focus', () => {
-  $('#change-lang-menu').classList.add('--focused')
-});
-
-$('#change-lang').addEventListener('blur', () => {
-  setTimeout(() => {
-    if ($$('#change-lang-menu a').find((a) => a === document.activeElement) === undefined) {
-      $('#change-lang-menu').classList.remove('--focused')
-    }
-  }, 100);
-});
-
-$('#change-lang-menu').addEventListener('focusin', function(e) {
-  let checkFocus;
-
-  this.classList.add('--focused');
-
-  checkFocus = setInterval(() => {
-    if ($$(this, 'a').find((a) => a === document.activeElement) === undefined) {
-      this.classList.remove('--focused');
-      clearInterval(checkFocus);
-    } 
-  }, 500);
-});
-
-$('#toggle-main-nav').addEventListener('click', (e) => {
-  e.preventDefault();
-
-  if ($('#main-nav').classList.contains('menu-open')) {
-    closeMenu();
+$('#change-lang').addEventListener('click', function() {
+  if (this.classList.contains('menu-open')) {
+    closeMenu(this, $('#change-lang-menu'));
   } else {
-    openMenu();
+    openMenu(this, $('#change-lang-menu'));
   }
 });
 
-$('#close-main-nav a').addEventListener('click', (e) => {
+$('#close-change-lang-menu').addEventListener('click', (e) => {
   e.preventDefault();
-  closeMenu();
+  closeMenu($('#change-lang'), $('#change-lang-menu'));
+  $('#change-lang').focus();
+});
+
+$('#close-change-lang-menu').addEventListener('blur', () => {
+  if (document.body.classList.contains('menu-open')) {
+    $('#change-lang-menu a').focus();
+  }
+});
+
+$('#change-lang-menu').addEventListener('click', function(e) {
+  if (this.classList.contains('menu-open') && e.target.classList.contains('Menu_background')) {
+    closeMenu($('#change-lang'), this);
+  }
+});
+
+$('#toggle-main-nav').addEventListener('click', function() {
+  if (this.classList.contains('menu-open')) {
+    closeMenu(this, $('#main-nav'));
+  } else {
+    openMenu(this, $('#main-nav'));
+  }
+});
+
+$('#close-main-nav').addEventListener('click', (e) => {
+  e.preventDefault();
+  closeMenu($('#toggle-main-nav'), $('#main-nav'));
   $('#toggle-main-nav').focus();
 });
 
-$('#close-main-nav a').addEventListener('blur', () => {
+$('#close-main-nav').addEventListener('blur', () => {
   if (document.body.classList.contains('menu-open')) {
     $('#main-nav a').focus();
   }
 });
 
 $('#main-nav').addEventListener('click', function(e) {
-  if ($('#main-nav').classList.contains('menu-open') && e.target === this) {
-    closeMenu();
+  if (this.classList.contains('menu-open') && e.target.classList.contains('Menu_background')) {
+    closeMenu($('#toggle-main-nav'), $('#main-nav'));
   }
 });
 
