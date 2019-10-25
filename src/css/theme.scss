@@ -61,7 +61,7 @@
     background-image: url("/uploads/Giovanni_Lanfranco_-_Miracle_of_the_Bread_and_Fish_-_WGA12454.jpg");
     background-position: center top;
 
-    [data-target="suffering"] & {
+    [data-target="suffering-verse"] & {
       opacity: 1;
     }
   }
@@ -70,7 +70,7 @@
     background-image: url("/uploads/Giovanni_Battista_Tiepolo_-_Christ_Carrying_the_Cross.jpg");
     background-position: center 90%;
 
-    [data-target="sacrifice"] & {
+    [data-target="sacrifice-verse"] & {
       opacity: 1;
     }
   }
@@ -94,14 +94,18 @@
       opacity: .9;
     }
 
-    [data-target="suffering"] & {
+    [data-target="suffering-verse"] & {
       background: $blue-90;
       opacity: .7;
     }
 
     [data-target="sacrifice"] & {
       background: $grey-90;
-      opacity: .7;
+    }
+
+    [data-target="sacrifice-verse"] & {
+      background: $grey-90;
+      opacity: .8;
     }
   }
 }
@@ -112,6 +116,7 @@
   left: 0;
   right: 0;
   bottom: 0;
+  min-height: 360px;
   clip: rect(auto, auto, auto, auto); // helps us get the clipping effect for the title
   justify-content: center;
   background: $grey-90;
@@ -126,9 +131,10 @@
   }
 
   &_titleQuestion {
-    font-size: font-size($font-baseline-32);
-    line-height: line-height($font-baseline-32);
+    font-size: font-size($font-baseline-28);
+    line-height: line-height($font-baseline-28);
     font-weight: 500;
+    margin: .5em 0;
 
     em {
       color: $purple-10;
@@ -136,7 +142,14 @@
     }
   }
 
-  @media(min-width: $tablet-min-bp) {
+  @media (min-height: 400px) {
+    &_titleQuestion {
+      font-size: font-size($font-baseline-32);
+      line-height: line-height($font-baseline-32);
+    }
+  }
+
+  @media (min-width: $tablet-min-bp) and (min-height: 640px) {
     &_title {
       margin-top: 0;
     }
@@ -144,6 +157,7 @@
     &_titleQuestion {
       font-size: font-size($font-baseline-44);
       line-height: line-height($font-baseline-44);
+      margin: 1em 0;
     }
   }
 }
@@ -237,6 +251,16 @@
   }
 
   [data-target="suffering"] & {
+    &--suffering {
+      opacity: 1;
+    }
+
+    em {
+      color: $blue-60;
+    }
+  }
+
+  [data-target="suffering-verse"] & {
     color: $white;
 
     &--suffering {
@@ -249,14 +273,26 @@
   }
 
   [data-target="sacrifice"] & {
-    color: $white;
+    color: $grey-20;
 
     &--sacrifice {
       opacity: 1;
     }
 
     em {
-      color: $grey-30;
+      color: $white;
+    }
+  }
+
+  [data-target="sacrifice-verse"] & {
+    color: $grey-20;
+
+    &--sacrifice {
+      opacity: 1;
+    }
+
+    em {
+      color: $white;
     }
   }
 
@@ -270,7 +306,7 @@
     }
   }
 
-  @media (max-width: $mobile-max-bp) {
+  @media (max-height: 600px), (max-width: $mobile-max-bp) {
     display: none;
   }
 }
@@ -334,6 +370,10 @@
     font-style: italic;
   }
 
+  em {
+    font-style: normal;
+  }
+
   &_authorityContainer {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(324px, 1fr));
@@ -349,6 +389,19 @@
     }
   }
 
+  &--white {
+    color: $grey-90;
+
+    .no-js & {
+      background: $white;
+    }
+  }
+
+  &--verse blockquote {
+    font-size: font-size($font-baseline-36);
+    line-height: line-height($font-baseline-36);
+  }
+
   @media (min-width: $tablet-min-bp) {
     font-size: font-size($font-baseline-36);
     line-height: line-height($font-baseline-36);
@@ -358,6 +411,11 @@
       line-height: line-height($font-baseline-32);
     }
 
+    &--verse blockquote {
+      font-size: font-size($font-baseline-40);
+      line-height: line-height($font-baseline-40);
+    }
+
     cite {
       font-size: font-size($font-baseline-24);
     }
@@ -365,16 +423,11 @@
 }
 
 #preamble {
-  color: $grey-90;
   margin-top: calc(#{100vh} - #{(2.05*line-height($font-baseline-24) + 2*font-size($font-baseline-24))});
 
   .container > p {
     font-size: font-size($font-baseline-40);
     line-height: line-height($font-baseline-40);
-  }
-
-  .no-js & {
-    background: $white;
   }
 
   @media (min-width: $tablet-min-bp) {
@@ -392,7 +445,6 @@
 
   em {
     color: $gold-70;
-    font-style: normal;
   }
 
   .no-js & {
@@ -403,7 +455,6 @@
 #authority-verses {
   em {
     color: $gold-20;
-    font-style: normal;
   }
 
   .no-js & {
@@ -412,30 +463,13 @@
 }
 
 #humbles {
-  color: $grey-90;
-
   em {
     color: $purple-60;
-    font-style: normal;
-  }
-
-  .no-js & {
-    background: $white;
   }
 }
 
 #humbles-verse {
   color: $purple-90;
-
-  blockquote {
-    font-size: font-size($font-baseline-36);
-    line-height: line-height($font-baseline-36);
-
-    @media (min-width: $tablet-min-bp) {
-      font-size: font-size($font-baseline-40);
-      line-height: line-height($font-baseline-40);
-    }
-  }
 
   .no-js & {
     background: $purple-10;
@@ -444,8 +478,13 @@
 
 #suffering {
   em {
+    color: $blue-60;
+  }
+}
+
+#suffering-verse {
+  em {
     color: $blue-20;
-    font-style: normal;
   }
 
   .no-js & {
@@ -453,10 +492,13 @@
   }
 }
 
-#sacrifice {
+#sacrifice,
+#sacrifice-verse {
+  color: $grey-10;
+
   em {
-    color: $gold-20;
-    font-style: normal;
+    color: $white;
+    background: linear-gradient(to top, $t, $t 3px, currentColor 3px, currentColor 4px, $t 3px, $t);
   }
 
   .no-js & {
@@ -465,14 +507,7 @@
 }
 
 #conclusion {
-  color: $grey-90;
-
   em {
     color: $purple-70;
-    font-style: normal;
-  }
-
-  .no-js & {
-    background: $white;
   }
 }

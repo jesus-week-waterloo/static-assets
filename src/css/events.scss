@@ -1,19 +1,12 @@
 #events-listing {
-  flex-wrap: wrap;
-  justify-content: space-between;
-
-  @media (min-width: $tablet-min-bp) { 
-    &:hover .event-link {
-      opacity: 0.5;
-    }
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .event-listing {
   position: relative;
   background-size: cover;
   background-position: center 0;
-  flex: 1 0 300px;
 
   h2 {
     margin-top: 1rem;

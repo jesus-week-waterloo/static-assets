@@ -33,6 +33,12 @@
     margin: 0 5vw;
     margin-top: -2.5rem;
     z-index: $z0;
+
+    @at-root {
+      :root[lang|="zh"] & {
+        line-height: 100px;
+      }
+    }
   }
 
   &_textBackground {
@@ -87,7 +93,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    color: $grey-60;
+    color: $grey-70;
     font-family: $display-font-family;
     font-weight: 200;
     font-size: 10vh;

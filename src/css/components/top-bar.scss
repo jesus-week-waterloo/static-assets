@@ -13,6 +13,7 @@
     background: none;
     border-color: $t;
     color: currentColor;
+    transition: .3s ease;
 
     &:hover,
     &.current-page {
@@ -36,7 +37,6 @@
     display: inline-block;
     border: none;
     opacity: 1;
-    transition: .3s ease;
 
     &:hover {
       opacity: .8;
@@ -133,11 +133,12 @@
 
   ul {
     position: absolute;
+    visibility: hidden;
     list-style: none;
     padding-left: 0;
     margin: 0;
     transform: translateY(-.3em);
-    transition: transform .3s ease;
+    transition: transform .3s ease, visibility 0s .3s;
   }
 
   li {
@@ -154,7 +155,9 @@
   }
 
   &.menu-open ul {
+    visibility: visible;
     transform: translateY(0);
+    transition-delay: 0s;
   }
 
   &.menu-open li {
@@ -163,9 +166,11 @@
 }
 
 .ChangeLang {
+  position: relative;
+
   ul {
     top: .5em;
-    right: line-height($font-baseline-48) - 2px;
+    right: -2px;
     background: $white;
     font-size: font-size($font-baseline-20);
     text-align: right;
@@ -189,7 +194,6 @@
 
 .MainNav {
   line-height: line-height($font-baseline-24) + line-height($font-baseline-20);
-  order: -1;
 
   a {
     vertical-align: middle;
@@ -203,10 +207,10 @@
     left: 0;
     right: 0;
     bottom: 0;
+    order: -1;
 
     .Menu_background {
       background-color: $grey-90;
-      opacity: .3;
     }
 
     ul {
@@ -234,53 +238,46 @@
 
     @for $i from 0 to 5 {
       &.menu-open li:nth-child(#{$i + 1}) {
-        transition-delay: $i * .1s + .2s;
+        transition-delay: $i * .1s + .15s;
       }
     }
   }
 }
 
 @media (min-width: $desktop-min-bp) {
-  #main-header .logo {
-    transition-delay: .3s;
+  #change-lang,
+  #change-lang-menu {
+    order: 1;
   }
 
-  .menu-open--main-nav #main-header .logo {
-    opacity: 0;
-    transition-delay: 0s;
+  #toggle-main-nav {
+    display: none;
   }
 
   .MainNav {
     opacity: 1;
+    pointer-events: all;
+    z-index: $z0;
 
     .Menu_background {
-      opacity: 0;
-      transition: .2s ease;
+      display: none;
     }
 
     ul {
       display: flex;
+      position: static;
+      visibility: visible;
+      transform: none;
+      margin-right: .5em;
     }
 
     li {
       white-space: pre;
       margin-right: 1em;
-      transform: translateY(-.3em);
-      transition: .2s ease;
-    }
+      opacity: 1;
 
-    &.menu-open li {
-      transform: translateY(0);
-    }
-
-    &.menu-open .Menu_background {
-      opacity: .8;
-    }
-
-    @for $i from 0 to 5 {
-      li:nth-child(#{5 - $i}),
-      &.menu-open li:nth-child(#{$i + 1}) {
-        transition-delay: $i * .05s;
+      &:last-child {
+        display: none;
       }
     }
   }

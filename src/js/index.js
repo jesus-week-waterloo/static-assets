@@ -7,9 +7,14 @@ import '@css/index.scss';
 function closeMenu(btn, target) {
   const oldAltTitle = btn.title;
 
-  document.body.classList.remove('menu-open', 'menu-open--' + btn.getAttribute('aria-controls'));
+  document.body.classList.remove('menu-open--' + btn.getAttribute('aria-controls'));
+
+  if (document.body.className.indexOf('menu-open--') == -1) {
+    // this is the only menu that was open
+    document.body.classList.remove('menu-open');
+  }
+
   target.classList.remove('menu-open');
-  $$(target, 'a').forEach((a) => a.setAttribute('tabindex', -1));
 
   btn.classList.remove('menu-open');
   btn.setAttribute('title', btn.dataset.altTitle);
@@ -22,7 +27,6 @@ function openMenu(btn, target) {
 
   document.body.classList.add('menu-open', 'menu-open--' + btn.getAttribute('aria-controls'));
   target.classList.add('menu-open');
-  $$(target, 'a').forEach((a) => a.setAttribute('tabindex', 0));
 
   btn.classList.add('menu-open');
   btn.setAttribute('title', btn.dataset.altTitle);
@@ -187,18 +191,6 @@ if (window.events && window.eventsURLs) {
 </div>`).join('')}`)
     } else {
       $(container, '.upcoming-events').insertAdjacentHTML('beforeend', '<em>No upcoming events.</em>');
-    }
-  }
-}
-
-if ($('.gospel-tract')) {
-  for (const gospel of $$('.gospel-tract')) {
-    for (const reveal of $$(gospel, '.gospel-tract-reveal')) {
-      reveal.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        gospel.classList.toggle('revealed');
-      });
     }
   }
 }
