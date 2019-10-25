@@ -3,6 +3,7 @@
 @import "@css/base/mixins.scss";
 @import "@css/base/colors.scss";
 @import "@css/base/utils.scss";
+@import "@css/base/layout.scss";
 
 @import "@css/base/general.scss";
 
@@ -11,19 +12,25 @@
 @import "@css/components/footer.scss";
 
 html {
-  background-color: $white;
-  color: $coal-80;
+  color: $grey-90;
   font-family: $font-family;
   font-size: font-size($font-baseline-20);
   line-height: line-height($font-baseline-20);
+
+  &.theme-dark {
+    background: $grey-90;
+    color: $white;
+  }
 }
 
 body {
   height: 100%;
   min-height: 100vh;
 
-  &.overflow-disabled {
-    overflow: hidden;
+  @media (max-width: #{$tablet-max-bp}) {
+    &.menu-open {
+      overflow: hidden;
+    }
   }
 }
 
@@ -46,33 +53,42 @@ body {
 
 #access a,
 #access a:hover {
-  line-height: 3;
-  background-color: $aqua-40;
-  border-bottom-color: $aqua-70;
-}
-
-#access-skip {
   position: absolute;
   display: block;
   width: 100%;
   text-align: center;
+  line-height: 3;
+  background-color: $blue-10;
 }
 
-#access-skip:focus {
+#access a:focus {
   top: 20em;
+}
+
+.accessibility-link {
+  color: currentColor;
+  font-size: inherit;
+  padding: 0;
+  cursor: pointer;
+
+  // 
+  &:focus {
+    outline: 1px dotted Highlight;
+    outline: 5px auto -webkit-focus-ring-color;
+  }
 }
 
 .navigate-up {
   display: inline-block;
   background: none;
-  color: $quartz;
+  color: $grey-80;
   font-size: font-size($font-baseline-16);
   border-bottom-color: $t;
   margin-top: font-size($font-baseline-48)/2;
 
   &:hover {
     background: none;
-    border-bottom-color: $quartz;
+    border-bottom-color: currentColor;
   }
 
   + h1 {
@@ -87,4 +103,5 @@ body {
 
 @import "@css/events.scss";
 @import "@css/gospel.scss";
+@import "@css/theme.scss";
 @import "@css/home.scss";

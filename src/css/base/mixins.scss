@@ -1,18 +1,1 @@
-@mixin transform($prop...) {
-  -webkit-transform: $prop;
-  transform: $prop;
-}
 
-@mixin animation($prop...) {
-  -webkit-animation: $prop;
-  animation: $prop;
-}
-
-@mixin keyframes($name) {
-  @-webkit-keyframes #{$name} {
-    @content;
-  }
-  @keyframes #{$name} {
-    @content;
-  }
-}

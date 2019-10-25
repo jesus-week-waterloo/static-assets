@@ -3,12 +3,16 @@ $font-baseline-16: 12.8px 16px;
 $font-baseline-20: 16px 20px;
 $font-baseline-24: 19.2px 24px;
 $font-baseline-28: 22.4px 28px;
+$font-baseline-32: 25.6px 32px;
 $font-baseline-36: 28.8px 36px;
+$font-baseline-40: 32px 40px;
+$font-baseline-44: 35.2px 44px;
 $font-baseline-48: 40px 48px;
 $font-baseline-64: 55.7px 64px;
 $font-baseline-80: 72px 80px;
 
-$font-family: aktiv-grotesk, system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', HelveticaNeue, Roboto, 'Segoe UI', Arial, sans-serif;
+$font-family: var(--rm-ff);
+$display-font-family: var(--disp-ff);
 
 $z-1: -1;
 $z0: 0;

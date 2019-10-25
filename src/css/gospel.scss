@@ -3,23 +3,32 @@
   margin: 1em 0;
 
   &-blue {
-    background-color: $aqua-80;
-    color: $aqua-40;
+    background-color: $blue-80;
+    color: $blue-10;
   }
 
   h2 {
     margin-top: 0;
   }
+
+  .blue-btn {
+    color: $blue-10;
+    background-image: linear-gradient(to bottom, $blue-10, $blue-10);
+    border-color: $blue-10;
+
+    &:hover {
+      color: $blue-80;
+      border-bottom-color: $blue-10;
+    }
+  }
 }
 
 .gospel-container {
-  flex-wrap: wrap;
   margin: 0 -1em;
   margin-bottom: 2em;
 }
 
 .gospel-tract {
-  flex: 1 0 270px;
   font-size: font-size($font-baseline-28);
   line-height: line-height($font-baseline-28);
   margin: 0.5em 1em;
@@ -28,12 +37,16 @@
     margin-left: -0.15em;
 
     mark {
-      color: $quartz-60;
+      color: $grey-70;
     }
   }
 
   &-content {
     position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    align-items: center;
+    grid-gap: 1em;
   }
 
   &-summary {
@@ -43,30 +56,10 @@
   }
 
   &-verse {
-    display: none;
-    margin-bottom: -1em;
+    margin: 0;
   }
 
-  &.revealed &-summary {
-    display: none;
-  }
-
-  &.revealed &-verse {
-    display: block;
-  }
-
-  @media (min-width: $tablet-min-bp) {
-    flex-basis: 320px;
-  }
-}
-
-.layout-gospel .blue-btn {
-  color: $aqua-40;
-  background-image: linear-gradient(to bottom, $aqua-40, $aqua-40);
-  border-color: $aqua-40;
-
-  &:hover {
-    color: $aqua-90;
-    border-bottom-color: $aqua-40;
+  &-source {
+    font-size: font-size($font-baseline-24);
   }
 }

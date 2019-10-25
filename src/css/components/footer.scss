@@ -1,33 +1,66 @@
 #main-footer {
-  background-color: $coal-80;
-  color: $white;
+  position: relative;
+  background: $grey-10;
   padding: 1em 0;
   margin-top: 2em;
 
-  > div > div {
+  @at-root {
+    .theme-dark & {
+      background: $grey-80;
+      color: $white;
+    }
+  }
+
+  .container > div {
     flex: 1;
   }
 
   a {
-    color: $white;
+    color: $grey-90;
     background: none;
     border-bottom-color: $t;
+    opacity: 1;
+    transition: .3s ease;
 
     &:hover {
-      color: $red;
+      opacity: .8;
+    }
+
+    @at-root {
+      .theme-dark & {
+        color: $white;
+      }
     }
   }
 
-  p a {
-    color: $white;
-    border-bottom-color: transparentize($red, 0.3);
+  .Footer_links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: -#{font-size($font-baseline-24)};
+
+    @media (min-width: $desktop-min-bp) {
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+    }
+  }
+
+  .Footer_links a {
     font-size: font-size($font-baseline-24);
     line-height: line-height($font-baseline-24);
+    white-space: nowrap;
+    margin-left: 1em;
+    margin-bottom: .5em;
 
     &:hover {
-      color: $white;
-      border-bottom-color: $red;
+      opacity: 1;
+      border-bottom-color: currentColor;
     }
+  }
+
+  .Footer_logo a {
+    border-bottom: none;
   }
 
   ul {
@@ -44,9 +77,46 @@
       flex: 1;
     }
   }
+
+  .cross-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+  }
+
+  .cross-vert,
+  .cross-horz {
+    position: absolute;
+    background: $grey-20;
+
+    @at-root {
+      .theme-dark & {
+        background: $grey-90;
+      }
+    }
+  }
+
+  @media (min-width: $desktop-min-bp) {
+    .cross-vert {
+      top: 0;
+      left: 14.5em;
+      bottom: 0;
+      width: 8px;
+    }
+
+    .cross-horz {
+      top: 2.5em;
+      left: 12em;
+      height: 8px;
+      width: calc(5em + 8px);
+    }
+  }
 }
 
-@media (min-width: $tablet-min-bp) {
+@media (min-width: $desktop-min-bp) {
   .mainscript {
     flex-direction: row;
   }

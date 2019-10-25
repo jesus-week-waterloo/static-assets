@@ -1,0 +1,4 @@
+.GrandTitle {
+  position: relative;
+  height: calc(#{100vh} - #{(2.05*line-height($font-baseline-24) + 2*font-size($font-baseline-24))});
+}
