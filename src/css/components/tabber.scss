@@ -11,6 +11,8 @@
     background: none;
     color: $grey-90;
     text-align: center;
+    font-size: font-size($font-baseline-20);
+    line-height: line-height($font-baseline-20);
     font-weight: 700;
     white-space: nowrap;
     padding: 1em;

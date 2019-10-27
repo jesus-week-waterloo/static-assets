@@ -169,10 +169,10 @@
   position: relative;
 
   ul {
-    top: .5em;
-    right: -2px;
+    top: .4em;
+    right: -.3em;
     background: $white;
-    font-size: font-size($font-baseline-20);
+    line-height: line-height($font-baseline-28);
     text-align: right;
     padding: .3em;
     border: 1px solid $grey-10;
@@ -197,6 +197,13 @@
 
   a {
     vertical-align: middle;
+  }
+
+  // weird fix for CJK menu links not following expected vertical align rules
+  @at-root {
+    :root[lang|="zh"] & a {
+      vertical-align: baseline;
+    }
   }
 }
 

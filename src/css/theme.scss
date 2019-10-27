@@ -149,15 +149,29 @@
     }
   }
 
-  @media (min-width: $tablet-min-bp) and (min-height: 640px) {
+  @media (min-height: 500px) {
+    &_titleQuestion {
+      font-size: font-size($font-baseline-36);
+      line-height: line-height($font-baseline-36);
+    }
+  }
+
+  @media (min-width: $tablet-min-bp) and (min-height: 600px) {
     &_title {
       margin-top: 0;
     }
 
     &_titleQuestion {
+      font-size: font-size($font-baseline-40);
+      line-height: line-height($font-baseline-40);
+      margin: 1em 0;
+    }
+  }
+
+  @media (min-width: $tablet-min-bp) and (min-height: 700px) {
+    &_titleQuestion {
       font-size: font-size($font-baseline-44);
       line-height: line-height($font-baseline-44);
-      margin: 1em 0;
     }
   }
 }
@@ -306,7 +320,7 @@
     }
   }
 
-  @media (max-height: 600px), (max-width: $mobile-max-bp) {
+  @media (max-width: $mobile-max-bp), (max-height: 540px) {
     display: none;
   }
 }
