@@ -1,3 +1,17 @@
+:root {
+  --link-color: #{$blue-60};
+  --link-border-color: #{$blue-40};
+  --link-hover-color: #{$blue-70};
+  --link-hover-border-color: #{$blue-80};
+
+  &.theme-dark {
+    --link-color: #{$blue-40};
+    --link-border-color: #{transparentize($blue-40, 0.3)};
+    --link-hover-color: #{$blue-30};
+    --link-hover-border-color: #{transparentize($blue-20, 0.3)};
+  }
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: $display-font-family;
   font-weight: 600;
@@ -35,17 +49,23 @@ h6 {
 }
 
 a {
-  color: $blue-60;
+  color: var(--link-color);
   text-decoration: none;
-  border-bottom: 1px solid transparentize($blue-80, 0.3);
+  border-bottom: 1px solid var(--link-border-color);
+  transition: 0.3s ease;
 
   &:hover {
-    border-bottom-color: $blue-80;
+    color: var(--link-hover-color);
+    border-bottom-color: var(--link-hover-border-color);
   }
 
   &.raw {
     word-break: break-all;
   }
+}
+
+.icon {
+  fill: currentColor;
 }
 
 .btn {
@@ -86,7 +106,6 @@ a {
   // background-size: calc(100% - 0.3em) 0.1em, calc(100% - 0.3em) 1.2em;
 
   .icon {
-    fill: currentColor;
     vertical-align: middle;
     padding: 0 0.2em;
     transition: transform 0.3s ease;
